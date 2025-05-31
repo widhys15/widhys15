@@ -4,188 +4,449 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>widhys</title>
+    <title>Widhy Suryana</title>
     <link href="tailwind.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
 </head>
-<body class="bg-body text-white font-poppins pb-12">
-    <header class="py-6">
-        <div class="container flex justify-between items-center mx-auto px-10 md:px-18 lg:px-22 w-full">
-            <div class="text-lg font-bold">widhys15</div>
-            <div class="hidden md:flex space-x-12 items-center">
-                <a href="#" class="text-selected-text">Home</a>   
-                <a href="#experiences">Experiences</a>   
-                <a href="#projects">Projects</a>   
-                <a href="#contactme"><button class="px-6 py-1 bg-theme font-bold">Contact Me</button></a>   
-            </div>
-            <div class="md:hidden">
-                <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 17.5H0.25V14.6667H13V17.5ZM25.75 10.4167H0.25V7.58333H25.75V10.4167ZM25.75 3.33333H13V0.5H25.75V3.33333Z" fill="white"/></svg>
-            </div>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-dots"></div>
+    <div class="circle-decoration circle-1"></div>
+    <div class="circle-decoration circle-2"></div>
+    
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">widhys15</div>
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#education">Education</a>
+                <a href="#experiences">Experiences</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact" class="hero-cta">Contact Me</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
     </header>
-    <div class="container mt-16 flex justify-between items-center mx-auto px-10 md:px-18 lg:px-22 w-full">
-        <div class="flex flex-wrap md:flex-nowrap">
-            <nav class="inline-block lg:mr-24 lg:w-4 fixed left-percentage hidden xl:block">
-                <div class="absolute left-50 transform -translate-x-1/2 space-y-6 mt-26">
-                    <a href="#" class="nav-dot selected-circle block w-7 h-7 rounded-full border-4 border-nav bg-body">
-                        <span class="bg-black px-2 py-1 rounded-md ml-10 opacity-0">Home</span>
-                    </a>
-                    <a href="#experiences" class="nav-dot block w-7 h-7 rounded-full border-4 border-nav bg-body">
-                        <span class="bg-black px-2 py-1 rounded-md ml-10 opacity-0">Experiences</span>
-                    </a>
-                    <a href="#projects" class="nav-dot block w-7 h-7 rounded-full border-4 border-nav bg-body">
-                        <span class="bg-black px-2 py-1 rounded-md ml-10 opacity-0">Projects</span>
-                    </a>
-                    <a href="#contactme" class="nav-dot block w-7 h-7 rounded-full border-4 border-nav bg-body">
-                        <span class="bg-black px-2 py-1 rounded-md ml-10 opacity-0">Contact</span>
-                    </a>
-                </div>
-            </nav>
-            <div class="flex flex-wrap lg:ml-20 justify-center md:justify-start max-w-50 mt-0 md:my-36">
-                <h1 class="font-bold text-5xl md:text-6xl lg:text-7xl text-center md:text-left">Hi!!!<br> My name is <br> <span class="text-transparent bg-clip-text bg-gradient-to-l from-blue-400 to-sky-600">Widhy</span></h1>
-                <h2>Still work in progress though</h2>
-                <button class="px-10 py-4 max-h-12 bg-theme text-white font-bold mt-12 flex items-center space-x-5">
-                    <div>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.4375 11C14.4375 11.9117 14.0753 12.786 13.4307 13.4307C12.786 14.0753 11.9117 14.4375 11 14.4375C10.0883 14.4375 9.21398 14.0753 8.56932 13.4307C7.92466 12.786 7.5625 11.9117 7.5625 11C7.5625 10.0883 7.92466 9.21398 8.56932 8.56932C9.21398 7.92466 10.0883 7.5625 11 7.5625C11.9117 7.5625 12.786 7.92466 13.4307 8.56932C14.0753 9.21398 14.4375 10.0883 14.4375 11Z" fill="white"/>
-                            <path d="M0 11C0 11 4.125 3.4375 11 3.4375C17.875 3.4375 22 11 22 11C22 11 17.875 18.5625 11 18.5625C4.125 18.5625 0 11 0 11ZM11 15.8125C12.2764 15.8125 13.5004 15.3055 14.403 14.403C15.3055 13.5004 15.8125 12.2764 15.8125 11C15.8125 9.72365 15.3055 8.49957 14.403 7.59705C13.5004 6.69453 12.2764 6.1875 11 6.1875C9.72365 6.1875 8.49957 6.69453 7.59705 7.59705C6.69453 8.49957 6.1875 9.72365 6.1875 11C6.1875 12.2764 6.69453 13.5004 7.59705 14.403C8.49957 15.3055 9.72365 15.8125 11 15.8125Z" fill="white"/>
-                        </svg>								
-                    </div>
-                    <span>My Experiences</span>
-                </button>
-            </div>
-            <img src="images/widhy.png" alt="me" class="object-contain max-h-screen md:-mt-12 sm:max-w-screen">
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="close-menu" id="close-menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="mobile-nav-links">
+            <a href="#">Home</a>
+            <a href="#education">Education</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact Me</a>
         </div>
     </div>
-    <div id="experiences" class="container mt-10 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-        <section class="w-full">
-            <h2 id="clients" class="secondary-title">Experiences</h2>
-            <p class="section-paragraph">I've had multiple experiences with several organizations throughout my university life. Down below is my list of experiences.</p>
 
-            <!-- Experiences -->
-            <div class="space-y-12 my-10">
-                <div class="w-full border border-nav p-12 lg:p-12 lg:space-x-12 flex justify-center lg:justify-start flex-wrap lg:flex-nowrap">
-                    
-                    <!-- Head of Operation SPARTA 2021 -->
-                    <img src="images/sparta.png" alt="sparta" class="mb-6 lg:mb-0 flex-none w-36 items-center">
+    <!-- Hero Section -->
+    <section class="hero container visible">
+        <div class="hero-content">
+            <h1>Hi! My name is <span class="gradient-text">Widhy</span></h1>
+            <p>Information System and Technology Graduate from Bandung Institute of Technology</p>
+            <p>Bandung, Indonesia | +6285798170810 | widhys15@gmail.com</p>
+            <p>Information System and Technology graduate with a strong foundation in digital product development, user research, and IT systems. Currently at PwC Indonesia as an Assurance Associate, supporting IT audits and contributing to machine learning process optimization for a major Indonesian bank. Previously led research and prototyping for IoT and fintech solutions, blending technical skills with user-centered design. Seeking an Associate Product Manager or Product Analyst role to drive product strategy and execution by combining user insight, business process understanding, and rapid prototyping experience.</p>
+            <a href="#experiences" class="hero-cta">
+                <svg width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline; margin-right: 8px; vertical-align: middle;">
+                    <path d="M14.4375 11C14.4375 11.9117 14.0753 12.786 13.4307 13.4307C12.786 14.0753 11.9117 14.4375 11 14.4375C10.0883 14.4375 9.21398 14.0753 8.56932 13.4307C7.92466 12.786 7.5625 11.9117 7.5625 11C7.5625 10.0883 7.92466 9.21398 8.56932 8.56932C9.21398 7.92466 10.0883 7.5625 11 7.5625C11.9117 7.5625 12.786 7.92466 13.4307 8.56932C14.0753 9.21398 14.4375 10.0883 14.4375 11Z" fill="white"/>
+                    <path d="M0 11C0 11 4.125 3.4375 11 3.4375C17.875 3.4375 22 11 22 11C22 11 17.875 18.5625 11 18.5625C4.125 18.5625 0 11 0 11ZM11 15.8125C12.2764 15.8125 13.5004 15.3055 14.403 14.403C15.3055 13.5004 15.8125 12.2764 15.8125 11C15.8125 9.72365 15.3055 8.49957 14.403 7.59705C13.5004 6.69453 12.2764 6.1875 11 6.1875C9.72365 6.1875 8.49957 6.69453 7.59705 7.59705C6.69453 8.49957 6.1875 9.72365 6.1875 11C6.1875 12.2764 6.69453 13.5004 7.59705 14.403C8.49957 15.3055 9.72365 15.8125 11 15.8125Z" fill="white"/>
+                </svg>
+                My Experiences
+            </a>
+        </div>
+        <div class="hero-image-container">
+            <img src="images/widhy.png" alt="Widhy Syahputra" class="hero-image">
+        </div>
+    </section>
 
-                    <!-- Info -->
-                    <div class="flex flex-wrap justify-center text-center lg:text-left lg:block">
-                        <h3 class="text-white text-3xl font-semibold">Head of Operation <span class="text-transparent bg-clip-text bg-gradient-to-l from-orange-100 to-orange-300">SPARTA 2021</span></h3>
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <p>My academic background and achievements.</p>
 
-                        <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-                            <div class="badge">Leadership</div>
-                            <div class="badge">Operation</div>
-                            <div class="badge">Communication</div>
-                        </div>
-
-                        <p class="text-secondary">Responsible for a team of 6 people to prepare and manage all operations for online and offline
-                            event. Working closely with all division to fullfill their logistic needs</p>
-                    </div>
-
-                </div>
-                <div class="w-full border border-nav p-12 lg:p-12 lg:space-x-12 flex justify-center lg:justify-start flex-wrap lg:flex-nowrap items-center">
-                    
-                    <!-- Vice Head Publication and Documentation -->
-                    <img src="images/hmif.png" alt="hmif" class="mb-6 lg:mb-0 flex-none w-36 items-center">
-
-                    <!-- Info -->
-                    <div class="flex flex-wrap justify-center text-center lg:text-left lg:block">
-                        <h3 class="text-white text-3xl font-semibold">Vice Head Publication and Documentation <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-l from-yellow-400 to-yellow-500">HMIF</span></h3>
-
-                        <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-                            <div class="badge">Publication</div>
-                            <div class="badge">Documentation</div>
-                            <div class="badge">Notion</div>
-                        </div>
-
-                        <p class="text-secondary">Manage all HMIF social media from Instagram, Twitter, Discord, and Youtube. Responsible for publishing important information inside HMIF and documenting events that held by HMIF.</p>
-                    </div>
-
-                </div>
+        <div class="card">
+            <h3>Bachelor of Science in Information System and Technology</h3>
+            <div class="card-subtitle">Bandung Institute of Technology (2020 - 2024)</div>
+            <div class="badge-container">
+                <span class="badge">GPA: 3.74/4.00</span>
             </div>
-            <div class="w-full border border-nav p-12 lg:p-12 lg:space-x-12 flex justify-center lg:justify-start flex-wrap lg:flex-nowrap items-center">
-                
-                <!-- HRM Asist -->
-                <img src="images/assist.png" alt="assist" class="mb-6 lg:mb-0 flex-none w-36 items-center">
+            <p><strong>Related coursework:</strong></p>
+            <p>System Requirements Analysis, IST Resource Management, IST Project Management</p>
+        </div>
+    </section>
 
-                <!-- Info -->
-                <div class="flex flex-wrap justify-center text-center lg:text-left lg:block">
-                    <h3 class="text-white text-3xl font-semibold">Human Resource Management Staff <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-l from-red-600 to-emerald-50">ASSISTS</span></h3>
+    <!-- Experiences Section -->
+    <section id="experiences" class="container">
+        <h2>Experiences</h2>
+        <p>My professional journey and work experiences.</p>
 
-                    <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-                        <div class="badge">Logistic</div>
-                        <div class="badge">Budgeting</div>
-                        <div class="badge">Communication</div>
+        <div class="card">
+            <h3>Assurance Associate</h3>
+            <div class="card-subtitle">PwC Indonesia - Jakarta, Indonesia</div>
+            <div class="card-date">July 2024 - Present</div>
+            <div class="badge-container">
+                <span class="badge">IT Audit</span>
+                <span class="badge">Data Analytics</span>
+                <span class="badge">Machine Learning</span>
+            </div>
+            <ul class="content-list">
+                <li>Conducted end-to-end IT audits (ITGC and ITAC) across industries including telecom and manufacturing, identifying control gaps and analyzing enterprise IT architectures and core business processes.</li>
+                <li>Automated data workflows using Alteryx to streamline audit procedures, enabling faster and more data-driven risk assessments across multiple engagements.</li>
+                <li>Collaborated with the data analytics team to build a scalable machine learning pipeline using PySpark for a well known Indonesian bank—translating modeling logic into optimized, production-ready code for big data processing.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Product Researcher Intern</h3>
+            <div class="card-subtitle">Evomo - Bandung, Indonesia</div>
+            <div class="card-date">September 2023 - February 2024</div>
+            <div class="badge-container">
+                <span class="badge">IoT</span>
+                <span class="badge">Product Research</span>
+                <span class="badge">Market Analysis</span>
+            </div>
+            <ul class="content-list">
+                <li>Conducted multiple research in the IoT Industry, focusing on enhancing manufacturing efficiency through analyses of overall equipment effectiveness and power monitoring systems.</li>
+                <li>Led the development of a new subscription business flow by translating competitor benchmarking and user feedback into actionable product insights.</li>
+                <li>Assessed product-market fit for a new IoT bootcamp initiative, resulting in a validated proposal supported by survey and trend analysis.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>My Digital Academy Awardee</h3>
+            <div class="card-subtitle">Bank Mandiri - Remote</div>
+            <div class="card-date">December 2023 - January 2024</div>
+            <div class="badge-container">
+                <span class="badge">Fintech</span>
+                <span class="badge">Prototyping</span>
+                <span class="badge">Product Design</span>
+            </div>
+            <ul class="content-list">
+                <li>Designed a fintech prototype using Outsystem to improve children's financial literacy, applying key product principles such as user segmentation, wireframing, and MVP definition.</li>
+                <li>Participated in product ideation sprints and presented product roadmaps to mentors for feedback and iteration.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>IT Platform Operation Intern</h3>
+            <div class="card-subtitle">Telkom International - Jakarta, Indonesia</div>
+            <div class="card-date">June 2023 - September 2023</div>
+            <div class="badge-container">
+                <span class="badge">Monitoring</span>
+                <span class="badge">Data Analytics</span>
+                <span class="badge">IT Audit</span>
+            </div>
+            <ul class="content-list">
+                <li>Monitored the NeuTrafix marketplace using Grafana and developed data analytics for resource allocation in 2023.</li>
+                <li>Utilized Python with the Pandas library to generate log summary from device log files and implemented an alert system using Telegram Bot for efficient device monitoring in Splunk.</li>
+                <li>Involved in data governance activities, including the review and implementation of key documents from the parent company and actively participated in various IT audit activities alongside internal and external auditors.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Cloud Computing Cohort</h3>
+            <div class="card-subtitle">Bangkit Academy 2023 - Remote</div>
+            <div class="card-date">February 2023 - July 2023</div>
+            <div class="badge-container">
+                <span class="badge">Cloud Computing</span>
+                <span class="badge">GCP</span>
+                <span class="badge">Web Programming</span>
+            </div>
+            <ul class="content-list">
+                <li>Acquired computer networking, system administration, and web programming skills. Utilizing JavaScript and Google Cloud services to build dynamic web applications.</li>
+                <li>Developed proficiency in cloud computing using Google Cloud Platform (GCP), specializing in architecting scalable and cost-efficient solutions.</li>
+                <li>Applied cloud computing expertise and API development knowledge in the final capstone project called Promosee.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Information System Laboratory Assistant</h3>
+            <div class="card-subtitle">ITB Information System Laboratory - Bandung, Indonesia</div>
+            <div class="card-date">September 2022 - Present</div>
+            <div class="badge-container">
+                <span class="badge">Teaching</span>
+                <span class="badge">Mentoring</span>
+                <span class="badge">Project Management</span>
+            </div>
+            <ul class="content-list">
+                <li>Facilitate student-led projects covering various subjects related to the information system every semester.</li>
+                <li>Guide students through the completion of projects by providing milestone-based supervision and corrections.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section with Versatile Showcase System -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Here are some of my projects throughout my life.</p>
+        
+        <div class="projects-grid">
+            <!-- YouTube Project -->
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="media-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <span>YouTube Video</span>
                     </div>
-
-                    <p class="text-secondary">Responsible to appreciate the graduates in April, July, and October with a gift of appreciation. The gift is filled by things from multiple vendors.</p>
                 </div>
-
-            </div>
-            </div>
-
-        </section>
-    </div>
-    <div id="projects" class="container mt-10 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-        <section class="w-full">
-            <h2 id="clients" class="secondary-title">Projects</h2>
-            <p class="section-paragraph">Here are some of my projects throughout my life.</p>
-
-            <!-- Experiences -->
-            <div class="space-y-12 my-10">
-                
-            </div>
-
-        </section>
-    </div>
-
-    <!-- Contact me -->
-    <div id="contactme" class="container mt-12 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-        <section class="w-full">
-            <h2 id="Contact" class="secondary-title">Contact me</h2>
-            <p class="section-paragraph">Feel free to to contact me any time, through any method below.</p>
-
-            <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-8">
-                <div class="space-y-12">
-                    <div>
-                        <label class="text-white block mb-6 text-xl font-bold">Name</label>
-                        <input class="w-full border border-input-border bg-input px-4 py-4">
+                <div class="project-content">
+                    <div class="project-type youtube">YOUTUBE</div>
+                    <h3 class="project-title">Project Title</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Tag 1</span>
+                        <span class="project-tag">Tag 2</span>
+                        <span class="project-tag">Tag 3</span>
                     </div>
-                    <div>
-                        <label class="text-white block mb-6 text-xl font-bold">Email</label>
-                        <input type="email" class="w-full border border-input-border bg-input px-4 py-4">
-                    </div>
-                    <div>
-                        <label class="text-white block mb-6 text-xl font-bold">Message</label>
-                        <textarea type="email" class="w-full border border-input-border bg-input px-4 py-4 h-56 resize-none"></textarea>
-                    </div>
-                    <button class="px-6 py-2 bg-theme text-white font-bold">Send it!</button>
-                </div>
-
-                <div class="mt-12">
-                    <!-- Contact info -->
-                    <p class="text-secondary">Widd#1515</p>
-                    <a href="mailto:widhys15@gmail.com" class="text-secondary underline mt-3 block">widhys15@gmail.com</a>
-
-                    <!-- Socials -->
-                    <div class="flex mt-20 space-x-6">
-                        <!-- LinkedIn -->
-                        <a href="https://www.linkedin.com/in/widhys/">
-                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="linkedin" class="w-16 h-16">
+                    <p class="project-description">Description of your project. Replace this with your actual project description when you have a YouTube video to showcase.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            Watch Video
                         </a>
-                        <!-- Medium -->
-                        <a href="https://medium.com/@shadowwidhy">
-                            <img src="https://play-lh.googleusercontent.com/hB9t3Z-mi284_49HA3nAuhO-W5Cyhje7r2P9McdgORoVCd-0SV54c12NMQWLHnqALw" alt="linkedin" class="w-16 h-16">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Medium Article -->
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="media-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                        </svg>
+                        <span>Medium Article</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-type medium">MEDIUM</div>
+                    <h3 class="project-title">Article Title</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Tag 1</span>
+                        <span class="project-tag">Tag 2</span>
+                        <span class="project-tag">Tag 3</span>
+                    </div>
+                    <p class="project-description">Description of your article. Replace this with your actual article description when you have a Medium article to showcase.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.5 10.5L12 6l4.5 4.5-1.05 1.05L12.75 8.85V18h-1.5V8.85l-2.7 2.7L7.5 10.5z"/>
+                            </svg>
+                            Read Article
                         </a>
                     </div>
                 </div>
-                
             </div>
+    
+            <!-- GitHub Repository -->
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="media-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>GitHub Repository</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-type github">GITHUB</div>
+                    <h3 class="project-title">Repository Name</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Tag 1</span>
+                        <span class="project-tag">Tag 2</span>
+                        <span class="project-tag">Tag 3</span>
+                    </div>
+                    <p class="project-description">Description of your repository. Replace this with your actual repository description when you have a GitHub repo to showcase.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- PDF Document -->
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="media-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                        <span>PDF Document</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-type pdf">PDF</div>
+                    <h3 class="project-title">Document Title</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Tag 1</span>
+                        <span class="project-tag">Tag 2</span>
+                        <span class="project-tag">Tag 3</span>
+                    </div>
+                    <p class="project-description">Description of your document. Replace this with your actual document description when you have a PDF to showcase.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            View Document
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Additional projects can be added here -->
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="media-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>Another Project</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-type github">GITHUB</div>
+                    <h3 class="project-title">Another Project</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">CSS</span>
+                    </div>
+                    <p class="project-description">This demonstrates how the grid automatically scales to accommodate more projects while maintaining the 2-per-row maximum on larger screens.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        </section>
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>Skills & Honors</h2>
+        <p>My professional skills and recognitions.</p>
+
+        <div class="card">
+            <h3>Professional Skills</h3>
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-category">Product Management</div>
+                    <p>User research, product roadmapping, wireframing, MVP testing, stakeholder management</p>
+                </div>
+                
+                <div>
+                    <div class="skill-category">Tools</div>
+                    <p>Figma, Draw.io, Canva, Google Suite, Microsoft 365</p>
+                </div>
+                
+                <div>
+                    <div class="skill-category">Tech & Dev</div>
+                    <p>Python, Pyspark, JavaScript, FastAPI, HTML/CSS, GCP</p>
+                </div>
+                
+                <div>
+                    <div class="skill-category">Data & Monitoring</div>
+                    <p>SQL, Pandas, Grafana, Splunk, Alteryx</p>
+                </div>
+                
+                <div>
+                    <div class="skill-category">Business Insight</div>
+                    <p>Risk assessment, IT Audit, Business Process Analysis</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Honors & Awards</h3>
+            <ul class="content-list">
+                <li>Best Team on Xcelerate Workshop: Building Effective Product Roadmap (2022)</li>
+                <li>Semifinalist on National Business Case Competition held by Universitas Airlangga (2021)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Contact Me</h2>
+        <p>Feel free to contact me any time, through any method below.</p>
+
+        <div class="card">
+            <div class="skills-grid">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="Your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-input" rows="5" placeholder="Your message"></textarea>
+                        </div>
+                        <button type="submit" class="form-button">Send Message</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3>Contact Information</h3>
+                    <p>Bandung, Indonesia</p>
+                    <p>+6285798170810</p>
+                    <a href="mailto:widhys15@gmail.com" style="color: #3F3FFF; text-decoration: underline;">widhys15@gmail.com</a>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/widhys/" class="social-link" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="social-icon">
+                        </a>
+                        <a href="https://medium.com/@shadowwidhy" class="social-link" target="_blank">
+                            <img src="https://play-lh.googleusercontent.com/hB9t3Z-mi284_49HA3nAuhO-W5Cyhje7r2P9McdgORoVCd-0SV54c12NMQWLHnqALw" alt="Medium" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <a href="#" class="nav-dot selected-circle"></a>
+        <a href="#education" class="nav-dot"></a>
+        <a href="#experiences" class="nav-dot"></a>
+        <a href="#projects" class="nav-dot"></a>
+        <a href="#skills" class="nav-dot"></a>
+        <a href="#contact" class="nav-dot"></a>
     </div>
 
     <script src="main.js"></script>
