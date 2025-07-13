@@ -1,0 +1,46 @@
+{
+  "professionalSkills": [
+    {
+      "category": "Technical Skills",
+      "skills": [
+        "Python", "JavaScript", "SQL", "HTML/CSS", "Git", "PySpark", "Alteryx", 
+        "Data Analytics", "REST API", "MongoDB", "Firebase", "Flutter", "Cloud Computing",
+        "Raspberry Pi", "IoT Systems", "System Integration", "UML", "BPMN"
+      ]
+    },
+    {
+      "category": "Product & UX Skills",
+      "skills": [
+        "User Research", "Prototyping", "Product Strategy", "UI/UX Design",
+        "Wireframing", "User Journey Mapping", "Market Analysis", "Usability Testing"
+      ]
+    },
+    {
+      "category": "Business & Architecture Skills",
+      "skills": [
+        "Business Process Analysis", "Business Model Canvas", "Enterprise Architecture",
+        "Project Management", "Stakeholder Mapping", "Documentation"
+      ]
+    },
+    {
+      "category": "Soft Skills",
+      "skills": [
+        "Collaboration", "Presentation", "Problem Solving", "Communication"
+      ]
+    }
+  ],
+  "honorsAwards": [
+    {
+      "title": "My Digital Academy Awardee",
+      "issuer": "Bank Mandiri",
+      "date": "December 2023",
+      "description": "Selected as one of 30 participants from over 1,000 applicants for an intensive fintech product development program."
+    },
+    {
+      "title": "Bangkit Academy Graduate",
+      "issuer": "Google, GoTo, Traveloka",
+      "date": "July 2023",
+      "description": "Completed the Cloud Computing path in Bangkit Academy, a highly selective tech education program supported by Google, GoTo, and Traveloka."
+    }
+  ]
+}

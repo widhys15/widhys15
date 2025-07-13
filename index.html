@@ -5,18 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Widhy Suryana</title>
-    <link href="tailwind.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <link href="tailwind.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Background Elements -->
+    <!-- Enhanced Background Elements -->
+    <div class="tech-grid"></div>
     <div class="bg-dots"></div>
+    <div class="diagonal-lines"></div>
+    <div class="circuit-pattern"></div>
+    
+    <!-- Animated Gradient Orbs -->
     <div class="circle-decoration circle-1"></div>
     <div class="circle-decoration circle-2"></div>
+    <div class="circle-decoration circle-3"></div>
+    <div class="circle-decoration circle-4"></div>
+    <div class="circle-decoration circle-5"></div>
     
+    <!-- Floating Elements -->
+    <div class="floating-element fe-1"></div>
+    <div class="floating-element fe-2"></div>
+    <div class="floating-element fe-3"></div>
+    <div class="noise-overlay"></div>
+    
+    <!-- Rest of your content -->
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container header-container">
@@ -27,7 +42,7 @@
                 <a href="#experiences">Experiences</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
-                <a href="#contact" class="hero-cta">Contact Me</a>
+                <a href="#contact" class="contact-btn">Contact Me</a>
             </nav>
             <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,322 +92,26 @@
         </div>
     </section>
 
+    <!-- Replace the existing sections with these empty containers -->
+
     <!-- Education Section -->
     <section id="education" class="container">
-        <h2>Education</h2>
-        <p>My academic background and achievements.</p>
-
-        <div class="card">
-            <h3>Bachelor of Science in Information System and Technology</h3>
-            <div class="card-subtitle">Bandung Institute of Technology (2020 - 2024)</div>
-            <div class="badge-container">
-                <span class="badge">GPA: 3.74/4.00</span>
-            </div>
-            <p><strong>Related coursework:</strong></p>
-            <p>System Requirements Analysis, IST Resource Management, IST Project Management</p>
-        </div>
+        <!-- Content will be loaded dynamically -->
     </section>
 
     <!-- Experiences Section -->
     <section id="experiences" class="container">
-        <h2>Experiences</h2>
-        <p>My professional journey and work experiences.</p>
-
-        <div class="card">
-            <h3>Assurance Associate</h3>
-            <div class="card-subtitle">PwC Indonesia - Jakarta, Indonesia</div>
-            <div class="card-date">July 2024 - Present</div>
-            <div class="badge-container">
-                <span class="badge">IT Audit</span>
-                <span class="badge">Data Analytics</span>
-                <span class="badge">Machine Learning</span>
-            </div>
-            <ul class="content-list">
-                <li>Conducted end-to-end IT audits (ITGC and ITAC) across industries including telecom and manufacturing, identifying control gaps and analyzing enterprise IT architectures and core business processes.</li>
-                <li>Automated data workflows using Alteryx to streamline audit procedures, enabling faster and more data-driven risk assessments across multiple engagements.</li>
-                <li>Collaborated with the data analytics team to build a scalable machine learning pipeline using PySpark for a well known Indonesian bank—translating modeling logic into optimized, production-ready code for big data processing.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>Product Researcher Intern</h3>
-            <div class="card-subtitle">Evomo - Bandung, Indonesia</div>
-            <div class="card-date">September 2023 - February 2024</div>
-            <div class="badge-container">
-                <span class="badge">IoT</span>
-                <span class="badge">Product Research</span>
-                <span class="badge">Market Analysis</span>
-            </div>
-            <ul class="content-list">
-                <li>Conducted multiple research in the IoT Industry, focusing on enhancing manufacturing efficiency through analyses of overall equipment effectiveness and power monitoring systems.</li>
-                <li>Led the development of a new subscription business flow by translating competitor benchmarking and user feedback into actionable product insights.</li>
-                <li>Assessed product-market fit for a new IoT bootcamp initiative, resulting in a validated proposal supported by survey and trend analysis.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>My Digital Academy Awardee</h3>
-            <div class="card-subtitle">Bank Mandiri - Remote</div>
-            <div class="card-date">December 2023 - January 2024</div>
-            <div class="badge-container">
-                <span class="badge">Fintech</span>
-                <span class="badge">Prototyping</span>
-                <span class="badge">Product Design</span>
-            </div>
-            <ul class="content-list">
-                <li>Designed a fintech prototype using Outsystem to improve children's financial literacy, applying key product principles such as user segmentation, wireframing, and MVP definition.</li>
-                <li>Participated in product ideation sprints and presented product roadmaps to mentors for feedback and iteration.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>IT Platform Operation Intern</h3>
-            <div class="card-subtitle">Telkom International - Jakarta, Indonesia</div>
-            <div class="card-date">June 2023 - September 2023</div>
-            <div class="badge-container">
-                <span class="badge">Monitoring</span>
-                <span class="badge">Data Analytics</span>
-                <span class="badge">IT Audit</span>
-            </div>
-            <ul class="content-list">
-                <li>Monitored the NeuTrafix marketplace using Grafana and developed data analytics for resource allocation in 2023.</li>
-                <li>Utilized Python with the Pandas library to generate log summary from device log files and implemented an alert system using Telegram Bot for efficient device monitoring in Splunk.</li>
-                <li>Involved in data governance activities, including the review and implementation of key documents from the parent company and actively participated in various IT audit activities alongside internal and external auditors.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>Cloud Computing Cohort</h3>
-            <div class="card-subtitle">Bangkit Academy 2023 - Remote</div>
-            <div class="card-date">February 2023 - July 2023</div>
-            <div class="badge-container">
-                <span class="badge">Cloud Computing</span>
-                <span class="badge">GCP</span>
-                <span class="badge">Web Programming</span>
-            </div>
-            <ul class="content-list">
-                <li>Acquired computer networking, system administration, and web programming skills. Utilizing JavaScript and Google Cloud services to build dynamic web applications.</li>
-                <li>Developed proficiency in cloud computing using Google Cloud Platform (GCP), specializing in architecting scalable and cost-efficient solutions.</li>
-                <li>Applied cloud computing expertise and API development knowledge in the final capstone project called Promosee.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>Information System Laboratory Assistant</h3>
-            <div class="card-subtitle">ITB Information System Laboratory - Bandung, Indonesia</div>
-            <div class="card-date">September 2022 - Present</div>
-            <div class="badge-container">
-                <span class="badge">Teaching</span>
-                <span class="badge">Mentoring</span>
-                <span class="badge">Project Management</span>
-            </div>
-            <ul class="content-list">
-                <li>Facilitate student-led projects covering various subjects related to the information system every semester.</li>
-                <li>Guide students through the completion of projects by providing milestone-based supervision and corrections.</li>
-            </ul>
-        </div>
+        <!-- Content will be loaded dynamically -->
     </section>
 
-    <!-- Projects Section with Versatile Showcase System -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <p>Here are some of my projects throughout my life.</p>
-        
-        <div class="projects-grid">
-            <!-- YouTube Project -->
-            <div class="project-card">
-                <div class="project-media">
-                    <div class="media-placeholder">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        <span>YouTube Video</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-type youtube">YOUTUBE</div>
-                    <h3 class="project-title">Project Title</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Tag 1</span>
-                        <span class="project-tag">Tag 2</span>
-                        <span class="project-tag">Tag 3</span>
-                    </div>
-                    <p class="project-description">Description of your project. Replace this with your actual project description when you have a YouTube video to showcase.</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                            Watch Video
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Medium Article -->
-            <div class="project-card">
-                <div class="project-media">
-                    <div class="media-placeholder">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                        </svg>
-                        <span>Medium Article</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-type medium">MEDIUM</div>
-                    <h3 class="project-title">Article Title</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Tag 1</span>
-                        <span class="project-tag">Tag 2</span>
-                        <span class="project-tag">Tag 3</span>
-                    </div>
-                    <p class="project-description">Description of your article. Replace this with your actual article description when you have a Medium article to showcase.</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.5 10.5L12 6l4.5 4.5-1.05 1.05L12.75 8.85V18h-1.5V8.85l-2.7 2.7L7.5 10.5z"/>
-                            </svg>
-                            Read Article
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- GitHub Repository -->
-            <div class="project-card">
-                <div class="project-media">
-                    <div class="media-placeholder">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>GitHub Repository</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-type github">GITHUB</div>
-                    <h3 class="project-title">Repository Name</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Tag 1</span>
-                        <span class="project-tag">Tag 2</span>
-                        <span class="project-tag">Tag 3</span>
-                    </div>
-                    <p class="project-description">Description of your repository. Replace this with your actual repository description when you have a GitHub repo to showcase.</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            View Repository
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- PDF Document -->
-            <div class="project-card">
-                <div class="project-media">
-                    <div class="media-placeholder">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                        </svg>
-                        <span>PDF Document</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-type pdf">PDF</div>
-                    <h3 class="project-title">Document Title</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Tag 1</span>
-                        <span class="project-tag">Tag 2</span>
-                        <span class="project-tag">Tag 3</span>
-                    </div>
-                    <p class="project-description">Description of your document. Replace this with your actual document description when you have a PDF to showcase.</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                            </svg>
-                            View Document
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Additional projects can be added here -->
-            <div class="project-card">
-                <div class="project-media">
-                    <div class="media-placeholder">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>Another Project</span>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-type github">GITHUB</div>
-                    <h3 class="project-title">Another Project</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">React</span>
-                        <span class="project-tag">JavaScript</span>
-                        <span class="project-tag">CSS</span>
-                    </div>
-                    <p class="project-description">This demonstrates how the grid automatically scales to accommodate more projects while maintaining the 2-per-row maximum on larger screens.</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            View Project
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <!-- Content will be loaded dynamically -->
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="container">
-        <h2>Skills & Honors</h2>
-        <p>My professional skills and recognitions.</p>
-
-        <div class="card">
-            <h3>Professional Skills</h3>
-            <div class="skills-grid">
-                <div>
-                    <div class="skill-category">Product Management</div>
-                    <p>User research, product roadmapping, wireframing, MVP testing, stakeholder management</p>
-                </div>
-                
-                <div>
-                    <div class="skill-category">Tools</div>
-                    <p>Figma, Draw.io, Canva, Google Suite, Microsoft 365</p>
-                </div>
-                
-                <div>
-                    <div class="skill-category">Tech & Dev</div>
-                    <p>Python, Pyspark, JavaScript, FastAPI, HTML/CSS, GCP</p>
-                </div>
-                
-                <div>
-                    <div class="skill-category">Data & Monitoring</div>
-                    <p>SQL, Pandas, Grafana, Splunk, Alteryx</p>
-                </div>
-                
-                <div>
-                    <div class="skill-category">Business Insight</div>
-                    <p>Risk assessment, IT Audit, Business Process Analysis</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>Honors & Awards</h3>
-            <ul class="content-list">
-                <li>Best Team on Xcelerate Workshop: Building Effective Product Roadmap (2022)</li>
-                <li>Semifinalist on National Business Case Competition held by Universitas Airlangga (2021)</li>
-            </ul>
-        </div>
+        <!-- Content will be loaded dynamically -->
     </section>
 
     <!-- Contact Section -->
@@ -400,8 +119,8 @@
         <h2>Contact Me</h2>
         <p>Feel free to contact me any time, through any method below.</p>
 
-        <div class="card">
-            <div class="skills-grid">
+        <div class="contact-form-row">
+            <div class="card">    
                 <div>
                     <form>
                         <div class="form-group">
@@ -419,12 +138,13 @@
                         <button type="submit" class="form-button">Send Message</button>
                     </form>
                 </div>
-                
+            </div>    
+            <div class="card">     
                 <div>
                     <h3>Contact Information</h3>
                     <p>Bandung, Indonesia</p>
                     <p>+6285798170810</p>
-                    <a href="mailto:widhys15@gmail.com" style="color: #3F3FFF; text-decoration: underline;">widhys15@gmail.com</a>
+                    <a href="mailto:widhys15@gmail.com" class="text-accent-1 hover:text-accent-4 transition-colors duration-300">widhys15@gmail.com</a>
                     
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/widhys/" class="social-link" target="_blank">

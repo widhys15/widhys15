@@ -1,0 +1,72 @@
+[
+  {
+    "title": "IoT-Based Remote Garden Monitoring System",
+    "description": "IoT solution integrating traditional irrigation and hydroponics for smart agriculture. Uses sensors, Raspberry Pi, Firebase, and a Flutter app for real-time remote monitoring and management, including automatic watering, nutrient dosing, and cloud dashboard. Designed for robust, scalable, and user-friendly operation in home or small-scale gardens.",
+    "tags": ["IoT", "Smart Agriculture", "Flutter", "Raspberry Pi", "Cloud"],
+    "type": "Final University Project and Research",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",
+    "code": "",
+    "demo": "",
+    "doc": ""
+  },
+  {
+    "title": "Foodie – Recipe & Ingredient Marketplace App",
+    "description": "A mobile app to browse, follow, and shop for complete recipes and instant ingredient packages, aimed at making cooking accessible and efficient for Indonesians. Features include recipe exploration, user-generated content, guided cooking instructions, ingredient delivery integration, and a built-in marketplace.",
+    "tags": ["Mobile App", "Marketplace", "Recipe", "User Generated Content"],
+    "type": "Product Design / Business Plan / Technical Doc",
+    "image": "hhttps://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
+    "code": "",
+    "demo": "",
+    "doc": ""
+  },
+  {
+    "title": "Mulia Box Enterprise Architecture (Documentation)",
+    "description": "A comprehensive enterprise architecture project for Mulia Box, a box manufacturing company, covering business, application, technology, and data architecture. Includes BPMN processes, stakeholder powermaps, app/technology portfolio, organizational changes, and data models to support digital transformation.",
+    "tags": ["Enterprise Architecture", "BPMN", "Manufacturing", "Business Process", "IT Strategy"],
+    "type": "Architecture Project",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+    "code": "",
+    "demo": "",
+    "doc": ""
+  },
+  {
+    "title": "Budget Buddies – Financial Literacy App for Teens",
+    "description": "Mobile app prototype focused on financial literacy for teenagers (age 15–17). Developed using Service Studio, it addresses needs and wants from both teens and parents around managing pocket money, with features designed for parental monitoring, educational content, and data-informed UX.",
+    "tags": ["Mobile App", "Financial Literacy", "UX Research"],
+    "type": "Product Design / UX Research",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    "code": "",
+    "demo": "",
+    "doc": ""
+  },
+  {
+    "title": "Promosee – Influencer Marketplace Platform",
+    "description": "Bangkit Capstone project connecting business owners and influencers for promotion. Includes features like influencer recommendation, campaign management, and marketplace operations. Built with cloud, mobile, and machine learning tech to streamline influencer discovery and campaign analytics.",
+    "tags": ["Capstone", "Marketplace", "Cloud", "Machine Learning", "Mobile"],
+    "type": "Capstone Project",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80",
+    "code": "",
+    "demo": "",
+    "doc": ""
+  },
+  {
+    "title": "CPU-GPU Recommendation API",
+    "description": "RESTful API to recommend optimal CPU and GPU combinations for PC building, minimizing bottlenecks and over-budget purchases. Supports user authentication, integrates with scraped hardware and benchmark databases, and provides best-fit suggestions based on budget and brand preferences.",
+    "tags": ["API", "Recommender System", "Python", "MongoDB"],
+    "type": "Backend / System Integration",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+    "code": "https://github.com/widd15/tubes-tst",
+    "demo": "",
+    "doc": ""
+  },
+  {
+    "title": "IT Platform Operations & Marketplace Monitoring – Telin Internship",
+    "description": "Internship project focused on developing and monitoring IT infrastructure at Telin, including intranet network migration, NeuTrafiX marketplace operation, dashboard development, and supporting IT audit/data governance. Key contributions: network documentation, core switch migration, daily monitoring with Grafana/Splunk, and process improvement for marketplace operations.",
+    "tags": ["Internship", "Network Monitoring", "Marketplace", "Dashboard", "Audit"],
+    "type": "Internship / IT Operations",
+    "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80",
+    "code": "",
+    "demo": "",
+    "doc": ""
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "degree": "Bachelor of Science in Information System and Technology",
+    "institution": "Bandung Institute of Technology",
+    "period": "2020 - 2024",
+    "gpa": "3.7/4.0",
+    "coursework": "Data Structures, Algorithms, Database Systems, Web Programming, Software Engineering, Data Analytics, Machine Learning, IT Project Management",
+    "order": 1
+  }
+]
