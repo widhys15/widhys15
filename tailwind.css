@@ -2289,3 +2289,338 @@ h2::after {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ===========================
+   Refresh Theme Overrides
+   =========================== */
+:root {
+  --bg-0: #070b14;
+  --bg-1: #0b1224;
+  --ink: #e5e7eb;
+  --muted: #d2d8e4;
+  --accent-1: #1e3a8a;
+  --accent-2: #38bdf8;
+  --accent-3: #f59e0b;
+  --card: #0f172a;
+  --border: rgba(148, 163, 184, 0.15);
+}
+
+body {
+  background-color: var(--bg-0);
+  background-image:
+    radial-gradient(900px 500px at 15% -15%, rgba(30, 58, 138, 0.28), transparent 60%),
+    radial-gradient(700px 420px at 85% 0%, rgba(14, 165, 233, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 65%, var(--bg-1) 100%);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.1px;
+}
+
+h1, h2, h3, .logo {
+  font-family: "Sora", "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+header {
+  background: rgba(7, 11, 20, 0.9);
+  border-bottom: 1px solid var(--border);
+}
+
+header.scrolled {
+  background: rgba(7, 11, 20, 0.95);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
+}
+
+.logo {
+  letter-spacing: 0.6px;
+}
+
+.nav-links a {
+  color: #a8b3c7;
+}
+
+.nav-links a::after,
+h2::after {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+}
+
+.gradient-text {
+  background-image: linear-gradient(90deg, #dbeafe 0%, #93c5fd 40%, #fbbf24 100%);
+}
+
+.hero {
+  gap: 3.5rem;
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: #93c5fd;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0.5rem 0 1rem;
+}
+
+.meta-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(30, 58, 138, 0.2);
+  color: #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.hero-cta,
+.project-link,
+.form-button {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 24px rgba(2, 6, 23, 0.4);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1.25rem;
+}
+
+.hero-actions .hero-cta {
+  margin-top: 0;
+}
+
+.hero-cta-secondary {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(30, 41, 59, 0.8));
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #e2e8f0;
+}
+
+.hero-cta-secondary i {
+  margin-right: 8px;
+}
+
+.hero-cta:hover,
+.project-link:hover,
+.form-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.55);
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(11, 18, 36, 0.95));
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 35px rgba(2, 6, 23, 0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.badge {
+  background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+  border: 1px solid rgba(30, 58, 138, 0.4);
+}
+
+.card-subtitle {
+  color: #cbd5e1;
+}
+
+.card-date {
+  color: #9fb0c5;
+}
+
+.project-description {
+  color: #cbd5e1;
+}
+
+.project-title {
+  color: #f8fafc;
+}
+
+.project-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #c7d2fe;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.projects-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.projects-focus span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(15, 23, 42, 0.6);
+  color: #cbd5f5;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(350px 160px at 10% 0%, rgba(56, 189, 248, 0.18), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-context {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+.context-label {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  color: #e2e8f0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.context-text {
+  color: #cbd5e1;
+}
+
+.exp-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.exp-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(14, 165, 233, 0.8));
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 8px 18px rgba(2, 6, 23, 0.4);
+  overflow: hidden;
+}
+
+.exp-logo img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.exp-meta h3 {
+  margin-bottom: 4px;
+}
+
+.project-media img {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 10px 25px rgba(2, 6, 23, 0.45);
+}
+
+.project-content {
+  gap: 0.75rem;
+}
+
+.project-media {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.project-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+}
+
+.project-card {
+  padding: 1rem;
+}
+
+.badge-container {
+  margin-bottom: 0.75rem;
+}
+
+.project-media img {
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.hero-image {
+  border: 6px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
+}
+
+.bg-dots {
+  opacity: 0.22;
+}
+
+.tech-grid {
+  opacity: 0.18;
+}
+
+.diagonal-lines {
+  opacity: 0.08;
+}
+
+.circuit-pattern {
+  opacity: 0.16;
+}
+
+.noise-overlay {
+  opacity: 0.015;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .hero-image {
+    width: 14rem;
+  }
+}

@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "degree": "Bachelor of Science in Information System and Technology",
-    "institution": "Bandung Institute of Technology",
+    "degree": "Bachelor of Science in Information Systems & Technology",
+    "institution": "Bandung Institute of Technology (ITB)",
     "period": "2020 - 2024",
-    "gpa": "3.7/4.0",
-    "coursework": "Data Structures, Algorithms, Database Systems, Web Programming, Software Engineering, Data Analytics, Machine Learning, IT Project Management",
+    "gpa": "3.74 / 4.00 (Cum Laude)",
+    "coursework": "IT System Analysis, Enterprise Architecture, UX/UI, Project Management, SDLC, Data Analytics, Machine Learning",
     "order": 1
   }
 ]

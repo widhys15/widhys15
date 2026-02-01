@@ -1,39 +1,48 @@
 [
   {
     "id": 1,
-    "title": "Assurance Associate",
+    "title": "Risk Assurance Associate",
     "company": "PwC Indonesia - Jakarta, Indonesia",
+    "logo": "images/logos/pwc.svg",
     "period": "July 2024 - Present",
-    "tags": ["IT Audit", "Data Analytics", "Machine Learning"],
+    "tags": ["ITGC", "ITAC", "ICFR", "CAATs", "PySpark"],
     "description": [
-      "Conducted end-to-end IT audits (ITGC and ITAC) across industries including telecom and manufacturing, identifying control gaps and analyzing enterprise IT architectures and core business processes.",
-      "Automated data workflows using Alteryx to streamline audit procedures, enabling faster and more data-driven risk assessments across multiple engagements.",
-      "Collaborated with the data analytics team to build a scalable machine learning pipeline using PySpark for a well known Indonesian bank—translating modeling logic into optimized, production-ready code for big data processing."
+      "Executed ITGC (access to programs and data, change management, computer operations, program development) and ITAC audits across SAP and non-SAP financial systems, supporting reliable financial reporting.",
+      "Performed process walkthroughs, evidence review, and assessment of configuration-based and IT-dependent controls impacting financial reporting.",
+      "Conducted journal entry testing and analytics using Alteryx, reducing manual testing effort by ~20–30% through structured filtering and anomaly identification.",
+      "Applied CAATs using Alteryx to extract, validate, and analyze datasets with 100K+ records, improving audit coverage and consistency.",
+      "Prepared and updated BPM and RCM documentation for ITGC processes as part of an ICFR implementation project.",
+      "Coordinated with financial audit teams and senior associates across concurrent engagements during peak periods.",
+      "Contributed to a PySpark-based pipeline on Cloudera/Hive for large-scale banking data analysis (1M+ monthly records)."
     ],
     "order": 1
   },
   {
     "id": 2,
-    "title": "Product Researcher Intern",
-    "company": "Evomo - Bandung, Indonesia",
-    "period": "September 2023 - February 2024",
-    "tags": ["IoT", "Product Research", "Market Analysis"],
+    "title": "Information System Laboratory Assistant",
+    "company": "ITB Information System Laboratory - Bandung, Indonesia",
+    "logo": "images/logos/itb.svg",
+    "period": "2022 - 2024",
+    "tags": ["Mentoring", "System Analysis", "Enterprise Architecture"],
     "description": [
-      "Conducted multiple research in the IoT Industry, focusing on enhancing manufacturing efficiency through analyses of overall equipment effectiveness and power monitoring systems.",
-      "Led the development of a new subscription business flow by translating competitor benchmarking and user feedback into actionable product insights.",
-      "Assessed product-market fit for a new IoT bootcamp initiative, resulting in a validated proposal supported by survey and trend analysis."
+      "Mentored student projects in system analysis, enterprise architecture, UX/UI, SDLC, and project management.",
+      "Guided project milestones and provided structured feedback."
     ],
     "order": 2
   },
   {
     "id": 3,
-    "title": "My Digital Academy Awardee",
-    "company": "Bank Mandiri - Remote",
-    "period": "December 2023 - January 2024",
-    "tags": ["Fintech", "Prototyping", "Product Design"],
+    "title": "IoT Product Researcher Intern",
+    "company": "Evomo - Bandung, Indonesia",
+    "logo": "images/logos/evomo.svg",
+    "period": "September 2023 - February 2024",
+    "tags": ["IoT", "Product Research", "Process Mapping", "Market Analysis"],
     "description": [
-      "Designed a fintech prototype using Outsystem to improve children's financial literacy, applying key product principles such as user segmentation, wireframing, and MVP definition.",
-      "Participated in product ideation sprints and presented product roadmaps to mentors for feedback and iteration."
+      "Conducted process mapping, requirement analysis, benchmarking, and user research to define features, user flows, and subscription concepts for an IoT energy monitoring platform.",
+      "Conducted IoT industry research related to manufacturing efficiency and energy monitoring.",
+      "Performed process mapping, requirement analysis, and competitor benchmarking.",
+      "Translated research insights into product features and subscription concepts.",
+      "Evaluated product-market fit using surveys and trend analysis."
     ],
     "order": 3
   },
@@ -41,37 +50,42 @@
     "id": 4,
     "title": "IT Platform Operation Intern",
     "company": "Telkom International - Jakarta, Indonesia",
+    "logo": "images/logos/telin.svg",
     "period": "June 2023 - September 2023",
-    "tags": ["Monitoring", "Data Analytics", "IT Audit"],
+    "tags": ["Python", "Monitoring", "Grafana", "IT Governance"],
     "description": [
-      "Monitored the NeuTrafix marketplace using Grafana and developed data analytics for resource allocation in 2023.",
-      "Utilized Python with the Pandas library to generate log summary from device log files and implemented an alert system using Telegram Bot for efficient device monitoring in Splunk.",
-      "Involved in data governance activities, including the review and implementation of key documents from the parent company and actively participated in various IT audit activities alongside internal and external auditors."
+      "Developed Python (Pandas) log-processing scripts for operational monitoring and integrated Telegram Bot API with Grafana alerts, improving incident response by ~30%.",
+      "Built Python (Pandas) scripts for log processing and operational monitoring.",
+      "Integrated Grafana alerts with Telegram Bot API, improving incident response time.",
+      "Supported IT data governance, audit coordination, and operational documentation.",
+      "Participated in IT operations monitoring and documentation."
     ],
     "order": 4
   },
   {
     "id": 5,
-    "title": "Cloud Computing Cohort",
-    "company": "Bangkit Academy 2023 - Remote",
-    "period": "February 2023 - July 2023",
-    "tags": ["Cloud Computing", "GCP", "Web Programming"],
+    "title": "My Digital Academy Awardee",
+    "company": "Bank Mandiri - Remote",
+    "logo": "images/logos/mandiri.svg",
+    "period": "December 2023 - January 2024",
+    "tags": ["Fintech", "Product Design", "Prototyping"],
     "description": [
-      "Acquired computer networking, system administration, and web programming skills. Utilizing JavaScript and Google Cloud services to build dynamic web applications.",
-      "Developed proficiency in cloud computing using Google Cloud Platform (GCP), specializing in architecting scalable and cost-efficient solutions.",
-      "Applied cloud computing expertise and API development knowledge in the final capstone project called Promosee."
+      "Selected participant in fintech product development program.",
+      "Designed a financial literacy prototype for teenagers and applied product principles (user segmentation, wireframing, MVP definition)."
     ],
     "order": 5
   },
   {
     "id": 6,
-    "title": "Information System Laboratory Assistant",
-    "company": "ITB Information System Laboratory - Bandung, Indonesia",
-    "period": "September 2022 - Present",
-    "tags": ["Teaching", "Mentoring", "Project Management"],
+    "title": "Cloud Computing Cohort",
+    "company": "Bangkit Academy 2023 - Remote",
+    "logo": "images/logos/bangkit.svg",
+    "period": "February 2023 - July 2023",
+    "tags": ["Cloud Computing", "GCP", "Web Programming"],
     "description": [
-      "Facilitate student-led projects covering various subjects related to the information system every semester.",
-      "Guide students through the completion of projects by providing milestone-based supervision and corrections."
+      "Learned cloud computing, networking, system administration, and web programming.",
+      "Built and deployed cloud-native applications using Google Cloud Platform (GCP).",
+      "Contributed to the Promosee capstone project (cloud + ML)."
     ],
     "order": 6
   }

@@ -1,31 +1,50 @@
 {
   "professionalSkills": [
     {
-      "category": "Technical Skills",
+      "category": "IT Audit & Governance",
       "skills": [
-        "Python", "JavaScript", "SQL", "HTML/CSS", "Git", "PySpark", "Alteryx", 
-        "Data Analytics", "REST API", "MongoDB", "Firebase", "Flutter", "Cloud Computing",
-        "Raspberry Pi", "IoT Systems", "System Integration", "UML", "BPMN"
+        "ITGC / ITAC testing",
+        "ICFR (BPM & RCM)",
+        "Control evaluation & walkthroughs",
+        "Audit analytics & CAATs"
       ]
     },
     {
-      "category": "Product & UX Skills",
+      "category": "Data & Engineering",
       "skills": [
-        "User Research", "Prototyping", "Product Strategy", "UI/UX Design",
-        "Wireframing", "User Journey Mapping", "Market Analysis", "Usability Testing"
+        "Python (Pandas, NumPy)",
+        "SQL",
+        "JavaScript",
+        "PySpark",
+        "Hive",
+        "Alteryx",
+        "ETL pipelines",
+        "Data validation",
+        "Anomaly detection",
+        "REST APIs",
+        "MongoDB",
+        "Firebase"
       ]
     },
     {
-      "category": "Business & Architecture Skills",
+      "category": "Cloud & Platforms",
       "skills": [
-        "Business Process Analysis", "Business Model Canvas", "Enterprise Architecture",
-        "Project Management", "Stakeholder Mapping", "Documentation"
+        "Google Cloud (Skill Badges)",
+        "Cloudera",
+        "Docker",
+        "Git",
+        "FastAPI"
       ]
     },
     {
-      "category": "Soft Skills",
+      "category": "Product & Analysis",
       "skills": [
-        "Collaboration", "Presentation", "Problem Solving", "Communication"
+        "Analytical thinking",
+        "Documentation & reporting",
+        "Stakeholder coordination",
+        "Cross-functional collaboration",
+        "Business process mapping",
+        "Requirements analysis"
       ]
     }
   ],
@@ -34,13 +53,13 @@
       "title": "My Digital Academy Awardee",
       "issuer": "Bank Mandiri",
       "date": "December 2023",
-      "description": "Selected as one of 30 participants from over 1,000 applicants for an intensive fintech product development program."
+      "description": "Developed skills in product development principles including user segmentation, wireframing, and MVP definition. Built a fintech prototype called Budget Buddies using OutSystems to improve children’s financial literacy as a final project."
     },
     {
-      "title": "Bangkit Academy Graduate",
+      "title": "Bangkit Academy 2023 – Cloud Computing Cohort",
       "issuer": "Google, GoTo, Traveloka",
-      "date": "July 2023",
-      "description": "Completed the Cloud Computing path in Bangkit Academy, a highly selective tech education program supported by Google, GoTo, and Traveloka."
+      "date": "February 2023 - July 2023",
+      "description": "Developed skills in computer networking, system administration, and web development using JavaScript and Google Cloud Platform. Earned <a href=\"https://www.skills.google/public_profiles/4728a126-ba1d-4796-8a5e-6cb77fba1d26\" target=\"_blank\" rel=\"noopener\">Google Cloud Skill Badges</a> and architected cloud-native APIs integrated with ML models for the Promosee capstone project."
     }
   ]
 }
