@@ -1,90 +1,150 @@
 [
   {
-  "title": "AI for Finance – PwC Project for Banking Client (2025)",
-  "description": "Built and maintained PySpark-based data pipelines on Cloudera to process and transform 1M+ monthly contract transaction records sourced from Hive tables for a banking client. The work focused on data preprocessing, feature preparation, and validation to support downstream machine learning and analytical models for branch-level financial trend analysis, with emphasis on data quality, business rule alignment, and scalability in a regulated environment.",
-  "tags": ["Cloudera", "PySpark", "Hive", "SQL", "Data Engineering"],
-  "type": "Data Engineering",
-  "image": "images/projects/finance.png",
-  "code": "",
-  "demo": "",
-  "doc": ""
+    "id": "ai-finance-pwc",
+    "title": "AI for Finance - PwC Project for Banking Client (2025)",
+    "summary": "Prepared 1M+ monthly banking contract transactions for branch-level trend analysis in a regulated environment.",
+    "description": "Built and maintained PySpark pipelines on Cloudera/Hive to preprocess banking contract data for branch-level financial trend analysis. Focused on data quality checks, feature preparation, and validation aligned with business rules in a regulated environment. Supported downstream analytics and ML workflows with reliable, scalable inputs.",
+    "impact": "Processed and validated 1M+ monthly contract records on Cloudera/Hive.",
+    "caseStudy": {
+      "context": "Banking finance analytics needed consistent, high-quality features from raw contract data.",
+      "role": "Built PySpark pipelines, data prep, and validation aligned to business rules.",
+      "outcome": "Reliable, scalable data foundation for branch-level financial trend analysis."
+    },
+    "tags": ["Cloudera", "PySpark", "Hive", "SQL", "Data Engineering"],
+    "type": "Data Engineering",
+    "group": "Data & Analytics",
+    "featured": true,
+    "image": "images/projects/finance.png",
+    "code": "",
+    "demo": "",
+    "doc": ""
   },
   {
-  "title": "IoT-Based Garden Monitoring & Maintenance System",
-  "description": "Designed and implemented an IoT-based remote garden monitoring and maintenance system integrating traditional irrigation and hydroponic farming into a single platform. The solution combines sensor-equipped hardware nodes, Raspberry Pi control units, Firebase cloud services, and a Flutter mobile application to enable real-time monitoring, automated irrigation and nutrient dosing, remote control, and alert notifications, with a focus on system reliability and usability.",
-  "tags": [
-    "IoT",
-    "Raspberry Pi",
-    "Arduino",
-    "Python",
-    "Firebase",
-    "Flutter",
-    "Embedded Systems",
-    "Cloud Database",
-    "Mobile Application"
-  ],
-  "type": "IoT System",
-  "image": "images/projects/iot-garden.png",
-  "code": "",
-  "demo": "",
-  "doc": ""
+    "id": "iot-garden",
+    "title": "IoT-Based Garden Monitoring & Maintenance System",
+    "summary": "Unified irrigation and hydroponics with sensor-driven monitoring, automation, and mobile control.",
+    "description": "Designed an IoT system that connects sensor nodes, Raspberry Pi controllers, Firebase, and a Flutter mobile app for remote garden monitoring. Implemented real-time data capture, automated irrigation and nutrient dosing, and alert notifications. Prioritized reliability and usability for day-to-day maintenance.",
+    "impact": "Integrated hardware, cloud, and mobile into one reliable IoT system.",
+    "caseStudy": {
+      "context": "Remote garden maintenance required real-time sensing and automated watering/nutrient control.",
+      "role": "Built hardware integration (Raspberry Pi/Arduino), Firebase backend, and Flutter app.",
+      "outcome": "End-to-end system for monitoring, alerts, and remote control."
+    },
+    "tags": [
+      "IoT",
+      "Raspberry Pi",
+      "Arduino",
+      "Python",
+      "Firebase",
+      "Flutter",
+      "Embedded Systems",
+      "Cloud Database",
+      "Mobile Application"
+    ],
+    "type": "IoT System",
+    "group": "Systems & Architecture",
+    "featured": true,
+    "image": "images/projects/iot-garden.png",
+    "code": "",
+    "demo": "",
+    "doc": ""
   },
   {
-  "title": "Promosee – Influencer Recommendation Platform (Bangkit Academy Capstone 2023)",
-  "description": "Built Promosee, a cloud-native influencer recommendation platform that connects business owners with suitable influencers based on product categories and campaign objectives. The system integrates a content-based recommender and BERT-based sentiment analysis, exposed through a FastAPI backend deployed on Google Cloud Run with Firestore as the NoSQL database.",
-  "tags": [
-    "Python",
-    "FastAPI",
-    "TensorFlow",
-    "BERT",
-    "Recommender System",
-    "GCP",
-    "Cloud Run",
-    "Firestore",
-    "ML Model Serving"
-  ],
-  "type": "Capstone Project",
-  "image": "images/projects/promosee.png",
-  "code": "",
-  "demo": "",
-  "doc": ""
+    "id": "promosee",
+    "title": "Promosee - Influencer Recommendation Platform (Bangkit Academy Capstone 2023)",
+    "summary": "Matched SMEs with influencers using content-based recommendations and sentiment signals on a cloud backend.",
+    "description": "Built a cloud-native influencer recommendation platform that matches SMEs with relevant creators by product category and campaign goals. Integrated a content-based recommender and BERT-based sentiment analysis behind a FastAPI service on Cloud Run. Used Firestore for storing influencer and campaign data.",
+    "impact": "Deployed a recommender API with sentiment scoring on Cloud Run.",
+    "caseStudy": {
+      "context": "Small businesses needed data-driven influencer matching by product category and campaign goals.",
+      "role": "Implemented FastAPI service, integrated recommender and BERT sentiment components, wired Firestore.",
+      "outcome": "Cloud-native platform enabling searchable, ranked influencer recommendations."
+    },
+    "tags": [
+      "Python",
+      "FastAPI",
+      "TensorFlow",
+      "BERT",
+      "Recommender System",
+      "GCP",
+      "Cloud Run",
+      "Firestore",
+      "ML Model Serving"
+    ],
+    "type": "Capstone Project",
+    "group": "Cloud & Machine Learning",
+    "featured": true,
+    "image": "images/projects/promosee.png",
+    "code": "",
+    "demo": "",
+    "doc": ""
   },
   {
-  "title": "To-Be Enterprise Architecture Design – Manufacturing (Mulia Box)",
-  "description": "Designed a To-Be Enterprise Architecture for a corrugated box manufacturing company, covering business, data, application, and technology architecture. The work included stakeholder analysis, value stream mapping, BPMN modeling, data entity design, and application–technology alignment, with a focus on improving production quality control and cross-division process clarity.",
-  "tags": [
-    "Enterprise Architecture",
-    "Business Architecture",
-    "BPMN",
-    "Data Architecture",
-    "Application Architecture",
-    "Gap Analysis",
-    "Documentation"
-  ],
-  "type": "Architecture Project",
-  "image": "images/projects/enterprise-arch.png",
-  "code": "",
-  "demo": "",
-  "doc": ""
+    "id": "enterprise-architecture",
+    "title": "To-Be Enterprise Architecture Design - Manufacturing (Mulia Box)",
+    "summary": "Mapped business, data, app, and tech layers to improve manufacturing process clarity.",
+    "description": "Designed a To-Be enterprise architecture covering business, data, application, and technology layers for a manufacturing workflow. Conducted stakeholder analysis, value stream mapping, and BPMN modeling to clarify processes and dependencies. Produced architecture artifacts to guide quality control and cross-division alignment.",
+    "impact": "Created To-Be architecture artifacts across business, data, app, and tech layers.",
+    "caseStudy": {
+      "context": "Manufacturing operations needed aligned processes, data entities, and application support.",
+      "role": "Led stakeholder analysis, BPMN modeling, data/entity design, and gap analysis.",
+      "outcome": "Clear target architecture to guide quality control and cross-division alignment."
+    },
+    "tags": [
+      "Enterprise Architecture",
+      "Business Architecture",
+      "BPMN",
+      "Data Architecture",
+      "Application Architecture",
+      "Gap Analysis",
+      "Documentation"
+    ],
+    "type": "Architecture Project",
+    "group": "Systems & Architecture",
+    "featured": false,
+    "image": "images/projects/enterprise-arch.png",
+    "code": "",
+    "demo": "",
+    "doc": ""
   },
   {
-  "title": "BudgetBuddies – Fintech & Financial Literacy Mobile Prototype",
-  "description": "Designed and documented BudgetBuddies, a fintech and financial literacy mobile prototype developed as part of Bank Mandiri’s My Digital Academy program. The project focused on budgeting assistance, spending awareness, and financial habit building through user journey mapping, feature definition, and system documentation.",
-  "tags": ["Fintech", "Financial Literacy", "Product Design", "UX Research", "System Documentation"],
-  "type": "Product Prototype",
-  "image": "images/projects/fintech.png",
-  "code": "",
-  "demo": "",
-  "doc": ""
+    "id": "budgetbuddies",
+    "title": "BudgetBuddies - Fintech & Financial Literacy Mobile Prototype",
+    "summary": "Designed a budgeting and financial-literacy mobile concept for Bank Mandiri's program.",
+    "description": "Designed a fintech and financial literacy mobile prototype for Bank Mandiri's My Digital Academy program. Mapped user journeys and defined features that encourage budgeting habits and spending awareness. Documented system scope and interaction flows for the prototype.",
+    "impact": "Defined user journeys and feature set for a fintech learning prototype.",
+    "caseStudy": {
+      "context": "Students needed simple tools to build budgeting habits and spending awareness.",
+      "role": "Produced user journey maps, feature definitions, and system documentation.",
+      "outcome": "Documented product concept and scope for a financial literacy prototype."
+    },
+    "tags": ["Fintech", "Financial Literacy", "Product Design", "UX Research", "System Documentation"],
+    "type": "Product Prototype",
+    "group": "Product & Fintech",
+    "featured": false,
+    "image": "images/projects/fintech.png",
+    "code": "",
+    "demo": "",
+    "doc": ""
   },
   {
-  "title": "CPU & GPU Recommendation API – Backend System Design",
-  "description": "Designed and implemented a backend recommendation API that suggests optimal CPU and GPU combinations based on user budget and brand preferences. The system applies benchmark-based scoring to prevent hardware bottlenecks, exposes secured REST endpoints with JWT authentication, and stores component data in a cloud-hosted MongoDB database.",
-  "tags": ["Python", "FastAPI", "REST API", "MongoDB", "JWT", "System Design", "Recommender System"],
-  "type": "Backend / APIs",
-  "image": "images/projects/backend.png",
-  "code": "",
-  "demo": "",
-  "doc": ""
+    "id": "cpu-gpu-recommender",
+    "title": "CPU & GPU Recommendation API - Backend System Design",
+    "summary": "Built a secured API that recommends CPU/GPU combos by budget and brand constraints.",
+    "description": "Designed a backend API that recommends CPU and GPU combinations based on budget and brand preferences. Implemented benchmark-based scoring to avoid bottlenecks and exposed secured REST endpoints with JWT authentication. Stored hardware components and rules in MongoDB for querying.",
+    "impact": "Designed benchmark-based scoring to prevent bottlenecks.",
+    "caseStudy": {
+      "context": "Users struggle to pick balanced PC parts within a fixed budget.",
+      "role": "Designed recommendation logic, REST endpoints, and JWT-secured access.",
+      "outcome": "Working backend with MongoDB data store and constraint-aware recommendations."
+    },
+    "tags": ["Python", "FastAPI", "REST API", "MongoDB", "JWT", "System Design", "Recommender System"],
+    "type": "Backend / APIs",
+    "group": "Backend / APIs",
+    "featured": false,
+    "image": "images/projects/backend.png",
+    "code": "",
+    "demo": "",
+    "doc": ""
   }
 ]
