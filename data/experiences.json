@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Risk Assurance Associate",
     "company": "PwC Indonesia - Jakarta, Indonesia",
-    "logo": "images/logos/pwc.svg",
+    "logo": "images/logos/pwc.png",
     "period": "July 2024 - Present",
     "tags": ["ITGC", "ITAC", "ICFR", "CAATs", "PySpark"],
     "description": [
@@ -21,7 +21,7 @@
     "id": 2,
     "title": "Information System Laboratory Assistant",
     "company": "ITB Information System Laboratory - Bandung, Indonesia",
-    "logo": "images/logos/itb.svg",
+    "logo": "images/logos/itb.png",
     "period": "2022 - 2024",
     "tags": ["Mentoring", "System Analysis", "Enterprise Architecture"],
     "description": [
@@ -34,7 +34,7 @@
     "id": 3,
     "title": "IoT Product Researcher Intern",
     "company": "Evomo - Bandung, Indonesia",
-    "logo": "images/logos/evomo.svg",
+    "logo": "images/logos/evomo.png",
     "period": "September 2023 - February 2024",
     "tags": ["IoT", "Product Research", "Process Mapping", "Market Analysis"],
     "description": [
@@ -50,7 +50,7 @@
     "id": 4,
     "title": "IT Platform Operation Intern",
     "company": "Telkom International - Jakarta, Indonesia",
-    "logo": "images/logos/telin.svg",
+    "logo": "images/logos/telin.png",
     "period": "June 2023 - September 2023",
     "tags": ["Python", "Monitoring", "Grafana", "IT Governance"],
     "description": [
@@ -66,7 +66,7 @@
     "id": 5,
     "title": "My Digital Academy Awardee",
     "company": "Bank Mandiri - Remote",
-    "logo": "images/logos/mandiri.svg",
+    "logo": "images/logos/mandiri.png",
     "period": "December 2023 - January 2024",
     "tags": ["Fintech", "Product Design", "Prototyping"],
     "description": [
@@ -79,7 +79,7 @@
     "id": 6,
     "title": "Cloud Computing Cohort",
     "company": "Bangkit Academy 2023 - Remote",
-    "logo": "images/logos/bangkit.svg",
+    "logo": "images/logos/bangkit.png",
     "period": "February 2023 - July 2023",
     "tags": ["Cloud Computing", "GCP", "Web Programming"],
     "description": [

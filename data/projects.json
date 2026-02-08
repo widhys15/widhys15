@@ -1,62 +1,90 @@
 [
   {
-    "title": "AI for Finance – PwC Project for Banking Client (2025)",
-    "description": "Built and executed PySpark pipelines on Cloudera, sourcing Hive data to preprocess 1M+ monthly contract transactions and support ML-driven analysis of branch financial trends.",
-    "tags": ["Cloudera", "PySpark", "Hive", "SQL", "Data Engineering"],
-    "type": "Data Engineering",
-    "image": "images/projects/finance.jpg",
-    "code": "",
-    "demo": "",
-    "doc": ""
+  "title": "AI for Finance – PwC Project for Banking Client (2025)",
+  "description": "Built and maintained PySpark-based data pipelines on Cloudera to process and transform 1M+ monthly contract transaction records sourced from Hive tables for a banking client. The work focused on data preprocessing, feature preparation, and validation to support downstream machine learning and analytical models for branch-level financial trend analysis, with emphasis on data quality, business rule alignment, and scalability in a regulated environment.",
+  "tags": ["Cloudera", "PySpark", "Hive", "SQL", "Data Engineering"],
+  "type": "Data Engineering",
+  "image": "images/projects/finance.png",
+  "code": "",
+  "demo": "",
+  "doc": ""
   },
   {
-    "title": "IoT Garden Monitoring & Maintenance System – Final University Project (2023-2024)",
-    "description": "Developed a smart gardening system integrating sensors, automation logic, and a Flutter app for real-time monitoring and alerts.",
-    "tags": ["Raspberry Pi", "Arduino", "Python", "Firebase", "Flutter", "IoT"],
-    "type": "IoT System",
-    "image": "images/projects/iot-garden.jpg",
-    "code": "",
-    "demo": "",
-    "doc": ""
+  "title": "IoT-Based Garden Monitoring & Maintenance System",
+  "description": "Designed and implemented an IoT-based remote garden monitoring and maintenance system integrating traditional irrigation and hydroponic farming into a single platform. The solution combines sensor-equipped hardware nodes, Raspberry Pi control units, Firebase cloud services, and a Flutter mobile application to enable real-time monitoring, automated irrigation and nutrient dosing, remote control, and alert notifications, with a focus on system reliability and usability.",
+  "tags": [
+    "IoT",
+    "Raspberry Pi",
+    "Arduino",
+    "Python",
+    "Firebase",
+    "Flutter",
+    "Embedded Systems",
+    "Cloud Database",
+    "Mobile Application"
+  ],
+  "type": "IoT System",
+  "image": "images/projects/iot-garden.png",
+  "code": "",
+  "demo": "",
+  "doc": ""
   },
   {
-    "title": "Promosee – Bangkit Academy Capstone Project (2023)",
-    "description": "Developed a FastAPI backend on GCP with an ML model recommending influencers based on campaign objectives.",
-    "tags": ["Python", "FastAPI", "GCP", "Cloud Run", "Firestore", "ML Model Serving"],
-    "type": "Capstone Project",
-    "image": "images/projects/promosee.jpg",
-    "code": "",
-    "demo": "",
-    "doc": ""
+  "title": "Promosee – Influencer Recommendation Platform (Bangkit Academy Capstone 2023)",
+  "description": "Built Promosee, a cloud-native influencer recommendation platform that connects business owners with suitable influencers based on product categories and campaign objectives. The system integrates a content-based recommender and BERT-based sentiment analysis, exposed through a FastAPI backend deployed on Google Cloud Run with Firestore as the NoSQL database.",
+  "tags": [
+    "Python",
+    "FastAPI",
+    "TensorFlow",
+    "BERT",
+    "Recommender System",
+    "GCP",
+    "Cloud Run",
+    "Firestore",
+    "ML Model Serving"
+  ],
+  "type": "Capstone Project",
+  "image": "images/projects/promosee.png",
+  "code": "",
+  "demo": "",
+  "doc": ""
   },
   {
-    "title": "Enterprise Architecture Documentation (Manufacturing)",
-    "description": "Enterprise architecture documentation covering business, application, technology, and data architecture for a manufacturing context.",
-    "tags": ["Enterprise Architecture", "BPMN", "Business Process", "Documentation"],
-    "type": "Architecture Project",
-    "image": "images/projects/enterprise-arch.jpg",
-    "code": "",
-    "demo": "",
-    "doc": ""
+  "title": "To-Be Enterprise Architecture Design – Manufacturing (Mulia Box)",
+  "description": "Designed a To-Be Enterprise Architecture for a corrugated box manufacturing company, covering business, data, application, and technology architecture. The work included stakeholder analysis, value stream mapping, BPMN modeling, data entity design, and application–technology alignment, with a focus on improving production quality control and cross-division process clarity.",
+  "tags": [
+    "Enterprise Architecture",
+    "Business Architecture",
+    "BPMN",
+    "Data Architecture",
+    "Application Architecture",
+    "Gap Analysis",
+    "Documentation"
+  ],
+  "type": "Architecture Project",
+  "image": "images/projects/enterprise-arch.png",
+  "code": "",
+  "demo": "",
+  "doc": ""
   },
   {
-    "title": "Fintech & Financial Literacy Mobile Prototypes",
-    "description": "Prototype concepts focused on financial literacy and fintech user journeys.",
-    "tags": ["Product Design", "UX Research", "Wireframing"],
-    "type": "Product Prototype",
-    "image": "images/projects/fintech.jpg",
-    "code": "",
-    "demo": "",
-    "doc": ""
+  "title": "BudgetBuddies – Fintech & Financial Literacy Mobile Prototype",
+  "description": "Designed and documented BudgetBuddies, a fintech and financial literacy mobile prototype developed as part of Bank Mandiri’s My Digital Academy program. The project focused on budgeting assistance, spending awareness, and financial habit building through user journey mapping, feature definition, and system documentation.",
+  "tags": ["Fintech", "Financial Literacy", "Product Design", "UX Research", "System Documentation"],
+  "type": "Product Prototype",
+  "image": "images/projects/fintech.png",
+  "code": "",
+  "demo": "",
+  "doc": ""
   },
   {
-    "title": "Backend Recommender System APIs",
-    "description": "APIs for recommendation workflows with data storage and retrieval support.",
-    "tags": ["Python", "REST API", "MongoDB", "Recommender System"],
-    "type": "Backend / APIs",
-    "image": "images/projects/backend.jpg",
-    "code": "",
-    "demo": "",
-    "doc": ""
+  "title": "CPU & GPU Recommendation API – Backend System Design",
+  "description": "Designed and implemented a backend recommendation API that suggests optimal CPU and GPU combinations based on user budget and brand preferences. The system applies benchmark-based scoring to prevent hardware bottlenecks, exposes secured REST endpoints with JWT authentication, and stores component data in a cloud-hosted MongoDB database.",
+  "tags": ["Python", "FastAPI", "REST API", "MongoDB", "JWT", "System Design", "Recommender System"],
+  "type": "Backend / APIs",
+  "image": "images/projects/backend.png",
+  "code": "",
+  "demo": "",
+  "doc": ""
   }
 ]
