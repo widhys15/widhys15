@@ -1,649 +1,681 @@
 // ===== Utilities =====
-// Fetch JSON with a soft failure (returns null on error).
+function debounce(fn, delay) {
+    let timer;
+    return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), delay); };
+}
+function createSkeleton() {
+    return `<div class="skeleton-block" aria-hidden="true">
+        <div class="skeleton-line skeleton-title"></div>
+        <div class="skeleton-line skeleton-subtitle"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line skeleton-short"></div>
+    </div>`;
+}
+function createErrorCard(label) {
+    return `<div class="error-item"><p>Could not load ${label}. Please refresh.</p></div>`;
+}
 async function fetchJSON(url) {
     try {
-        const response = await fetch(url, { cache: 'no-store' });
-        if (!response.ok) {
-            console.warn(`Could not load ${url}. Status: ${response.status}`);
-            return null;
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(`Error loading ${url}:`, error);
-        return null;
-    }
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) return null;
+        return await res.json();
+    } catch (e) { return null; }
 }
 
-// Create HTML for a list of badges (chips).
-function renderBadges(tags = [], limit = null) {
-    if (!tags.length) return '';
-    const safeTags = Number.isInteger(limit) ? tags.slice(0, limit) : tags;
-    return `
-        <div class="badge-container">
-            ${safeTags.map(tag => `<span class="badge">${tag}</span>`).join('')}
-        </div>
-    `;
-}
+// ===== Matrix constants (Feature M) =====
+// [governance, data, cloud, advisory] per experience id
+const EXP_MATRIX = {
+    1: [1.0,  0.90, 0.30, 1.0 ],
+    2: [0.45, 0.30, 0.10, 0.85],
+    3: [0.20, 0.40, 0.10, 0.75],
+    4: [0.35, 0.75, 0.60, 0.45],
+    5: [0.10, 0.15, 0.10, 0.65],
+    6: [0.10, 0.55, 0.90, 0.35],
+};
+const SKILL_CATS = ['IT Governance', 'Data & Engineering', 'Cloud & Platforms', 'Advisory'];
+const CELL_NOTES = {
+    '1-0': 'ITGC/ITAC audits, ICFR consulting, BPM/RCM design — banking, retail, energy, telecom',
+    '1-1': 'CAATs via Alteryx on 100K+ records, PySpark on Cloudera/Hive, analytics champion',
+    '1-2': 'Cloudera/Hive, SAP & non-SAP system configurations and access testing',
+    '1-3': 'Client IT controls consulting, colleague training & enablement, analytics adoption lead',
+    '2-0': 'Taught system analysis, enterprise architecture, SDLC frameworks to students',
+    '2-1': 'Mentored database systems, algorithms, UX/UI design, data-centric coursework',
+    '2-2': '—',
+    '2-3': 'Structured feedback, project milestone guidance, cross-group coordination over 2 years',
+    '3-0': 'Supported IT governance documentation and audit coordination',
+    '3-1': 'Requirement analysis, competitor benchmarking, process mapping for IoT platform',
+    '3-2': '—',
+    '3-3': 'User research, stakeholder interviews, feature & subscription definition',
+    '4-0': 'IT data governance, audit coordination, operational documentation',
+    '4-1': 'Python log-processing scripts, Grafana data integration, ~30% faster incident response',
+    '4-2': 'Grafana + Telegram Bot API, platform monitoring, cloud alert integration',
+    '4-3': 'Cross-team IT ops coordination, reporting, structured documentation',
+    '5-0': '—',
+    '5-1': '—',
+    '5-2': '—',
+    '5-3': 'User segmentation, MVP definition, product concept for fintech prototype',
+    '6-0': '—',
+    '6-1': 'GCP fundamentals, FastAPI + ML model integration, data pipelines',
+    '6-2': 'Google Cloud Platform, Cloud Run, Firestore, cloud-native deployment',
+    '6-3': 'Team collaboration on Bangkit capstone, structured self-paced learning program',
+};
+
+// ===== Graph constants (Feature L) =====
+const GRAPH_TECH_LIMIT = 11;
+const GRAPH_W = 960;
+const GRAPH_H = 460;
+const PROJ_RING_R = 178; // fixed radius for project nodes
 
 // ===== Education =====
 async function renderEducation() {
     const container = document.getElementById('education');
     if (!container) return;
-
+    container.innerHTML = createSkeleton();
     const data = await fetchJSON('data/education.json');
-    let html = `
-        <h2>Education</h2>
-        <p>My academic background and achievements.</p>
-    `;
-
-    if (data && data.length) {
-        data.forEach(edu => {
-            html += `
-                <div class="card">
-                    <h3>${edu.degree}</h3>
-                    <div class="card-subtitle">${edu.institution} (${edu.period})</div>
-                    ${edu.gpa ? `<div class="badge-container"><span class="badge">GPA: ${edu.gpa}</span></div>` : ''}
-                    ${edu.coursework ? `<p><strong>Related coursework:</strong></p><p>${edu.coursework}</p>` : ''}
-                </div>
-            `;
-        });
-    } else {
-        html += `
-            <div class="card">
-                <h3>Bachelor of Science in Information System and Technology</h3>
-                <div class="card-subtitle">Bandung Institute of Technology (2020 - 2024)</div>
-                <div class="badge-container"><span class="badge">GPA: 3.7/4.0</span></div>
-                <p><strong>Related coursework:</strong></p>
-                <p>Data Structures, Algorithms, Database Systems, Web Programming, Software Engineering, Data Analytics, Machine Learning, IT Project Management</p>
+    if (!data) { container.innerHTML = sectionShell('01', 'Education', createErrorCard('education')); return; }
+    const rows = (data || []).map(edu => `
+        <div class="edu-item slide-in">
+            <div>
+                <div class="edu-period">${edu.period || ''}</div>
+                <div class="edu-school">${edu.institution || ''}</div>
             </div>
-        `;
-    }
-
-    container.innerHTML = html;
+            <div>
+                <div class="edu-degree">${edu.degree || ''}</div>
+                ${edu.gpa ? `<div class="edu-meta">GPA ${edu.gpa}</div>` : ''}
+                ${edu.coursework ? `<div class="edu-coursework"><strong>Coursework:</strong>${edu.coursework.split(' · ').map(c=>`<span class="edu-cw-cluster">${c}</span>`).join('')}</div>` : ''}
+            </div>
+        </div>`).join('');
+    container.innerHTML = sectionShell('01', 'Education', `<div>${rows}</div>`);
+    observeSlideIns(container);
 }
 
-// ===== Experiences =====
-// Renders a simple timeline-style list of cards.
+// ===== Experiences (with matrix) =====
 async function renderExperiences() {
     const container = document.getElementById('experiences');
     if (!container) return;
-
+    container.innerHTML = createSkeleton();
     const data = await fetchJSON('data/experiences.json');
-    let html = `
-        <h2>Experiences</h2>
-        <p>My professional journey and work experiences.</p>
-    `;
+    if (!data) { container.innerHTML = sectionShell('03', 'Work', createErrorCard('experiences')); return; }
 
-    if (data && data.length) {
-        data.forEach(exp => {
-            const initials = getCompanyInitials(exp.company || '');
-            html += `
-                <div class="card">
-                    <div class="exp-header">
-                        <div class="exp-logo">
-                            ${exp.logo ? `<img src="${exp.logo}" alt="${exp.company} logo" loading="lazy">` : `<span>${initials}</span>`}
-                        </div>
-                        <div class="exp-meta">
-                            <h3>${exp.title}</h3>
-                            <div class="card-subtitle">${exp.company}</div>
-                            <div class="card-date">${exp.period}</div>
-                        </div>
-                    </div>
-                    ${renderBadges(exp.tags)}
-                    ${Array.isArray(exp.description) ? `
-                        <ul class="content-list">
-                            ${exp.description.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                    ` : ''}
+    const matrix = buildSkillMatrix(data);
+    const rows = (data || []).map(exp => {
+        const tags = (exp.tags || []).map(t => `<span class="exp-tag">${t}</span>`).join('');
+        const body = exp.id === 1 ? renderPwCDescriptionSections(exp.description || []) : renderBulletList(exp.description || []);
+        return `
+            <div class="exp-item slide-in">
+                <div>
+                    <div class="exp-period">${formatPeriod(exp.period)}</div>
+                    <div class="exp-company">${getCompanyShort(exp.company)}</div>
                 </div>
-            `;
-        });
-    } else {
-        html += `
-            <div class="card">
-                <h3>Assurance Associate</h3>
-                <div class="card-subtitle">PwC Indonesia - Jakarta, Indonesia</div>
-                <div class="card-date">July 2024 - Present</div>
-                <div class="badge-container">
-                    <span class="badge">IT Audit</span>
-                    <span class="badge">Data Analytics</span>
-                    <span class="badge">Machine Learning</span>
+                <div>
+                    <div class="exp-title">${exp.title || ''}</div>
+                    ${tags ? `<div class="exp-tags">${tags}</div>` : ''}
+                    ${body}
                 </div>
-                <ul class="content-list">
-                    <li>Conducted end-to-end IT audits across multiple industries.</li>
-                    <li>Automated audit data workflows with Alteryx.</li>
-                    <li>Built scalable ML pipelines in PySpark.</li>
-                </ul>
+            </div>`;
+    }).join('');
+
+    container.innerHTML = sectionShell('03', 'Work', matrix + `<div class="exp-list">${rows}</div>`);
+    observeSlideIns(container);
+    observeStaggerItems(container);
+    setupMatrixInteractions(container);
+}
+
+function buildSkillMatrix(experiences) {
+    const cols = experiences.map(exp => ({
+        id: exp.id,
+        short: getCompanyShort(exp.company).split(' ')[0],
+    }));
+
+    const colHeaders = `<div class="matrix-corner"></div>` +
+        cols.map(c => `<div class="matrix-col-hdr">${c.short}</div>`).join('');
+
+    const bodyRows = SKILL_CATS.map((cat, ci) =>
+        `<div class="matrix-row-hdr">${cat}</div>` +
+        cols.map(col => {
+            const level = (EXP_MATRIX[col.id] || [])[ci] || 0;
+            const note  = CELL_NOTES[`${col.id}-${ci}`] || '—';
+            const circ  = (level * 50.27).toFixed(1);
+            return `
+                <div class="matrix-cell" data-note="${note.replace(/"/g, '&quot;')}" data-level="${level.toFixed(2)}">
+                    <svg viewBox="0 0 24 24" width="24" height="24" class="matrix-svg">
+                        <circle cx="12" cy="12" r="8" class="dot-track"/>
+                        <circle cx="12" cy="12" r="8" class="dot-fill"
+                            stroke-dasharray="${circ} 50.27"
+                            stroke-dashoffset="12.57"/>
+                    </svg>
+                </div>`;
+        }).join('')
+    ).join('');
+
+    return `
+        <div class="exp-matrix-wrap">
+            <div class="matrix-hdr-row">
+                <span class="matrix-label">Skill intensity by role</span>
+                <span class="matrix-legend">
+                    <span>● full</span><span>◕ med</span><span>○ low</span>
+                </span>
             </div>
-        `;
+            <div class="matrix-grid" style="grid-template-columns:130px repeat(${cols.length},1fr)">
+                ${colHeaders}${bodyRows}
+            </div>
+            <div class="matrix-note" id="matrix-note">Hover a cell to see the specific work</div>
+        </div>`;
+}
+
+function setupMatrixInteractions(container) {
+    const note = container.querySelector('#matrix-note');
+    container.querySelectorAll('.matrix-cell').forEach(cell => {
+        cell.addEventListener('mouseenter', () => {
+            const txt = cell.dataset.note;
+            if (!txt || txt === '—') return;
+            note.textContent = txt;
+            note.classList.add('active');
+        });
+        cell.addEventListener('mouseleave', () => {
+            note.classList.remove('active');
+            note.textContent = 'Hover a cell to see the specific work';
+        });
+    });
+}
+
+function renderBulletList(items) {
+    if (!items.length) return '';
+    return `<ul class="exp-bullets">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+}
+function renderPwCDescriptionSections(description) {
+    const sections = [
+        { label: 'IT Audit & Assurance',                        items: description.slice(0, 3) },
+        { label: 'ICFR Implementation & IT Controls Consulting', items: description.slice(3, 5) },
+        { label: 'Internal Initiatives',                         items: description.slice(5) }
+    ];
+    return sections.map(s => `
+        <div class="exp-sublabel">${s.label}</div>
+        <ul class="exp-bullets">${s.items.map(i => `<li>${i}</li>`).join('')}</ul>`).join('');
+}
+function formatPeriod(p = '') {
+    return p.replace('July','Jul').replace('September','Sep').replace('January','Jan')
+            .replace('February','Feb').replace('December','Dec').replace('June','Jun');
+}
+function getCompanyShort(c = '') { return c.split(' - ')[0].trim(); }
+
+// ===== Projects (Force graph, Feature L) =====
+function getProjectColorName(project) {
+    if (project.status === 'in-progress')            return 'amber';
+    if (project.group === 'Data & Analytics')        return 'green';
+    if (project.group === 'Cloud & Machine Learning') return 'blue';
+    return 'muted';
+}
+const COLOR_VAR = { amber:'var(--amber)', green:'var(--green)', blue:'var(--blue)', muted:'var(--muted2)' };
+
+function shortenTitle(title) {
+    const stop = new Set(['&','-','—','and','for','the','of','a','an','to','in','based']);
+    return title.split(/[\s\-—]+/).filter(w => w && !stop.has(w.toLowerCase())).slice(0, 3).join(' ');
+}
+
+function buildGraphData(projects) {
+    const freq = {};
+    projects.forEach(p => (p.tags || []).forEach(t => { freq[t] = (freq[t] || 0) + 1; }));
+    const topTechs = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,GRAPH_TECH_LIMIT).map(([t])=>t);
+
+    const nodes = [], edges = [], nodeMap = {};
+    projects.forEach((p, i) => {
+        const n = { id:p.id, type:'project', label:shortenTitle(p.title),
+                    colorName:getProjectColorName(p), r:22, mass:5,
+                    x:0, y:0, vx:0, vy:0, project:p, num:i+1 };
+        nodes.push(n); nodeMap[p.id] = n;
+    });
+    topTechs.forEach(tech => {
+        const n = { id:`tech:${tech}`, type:'tech', label:tech, freq:freq[tech],
+                    r:Math.max(5,Math.min(10,4+freq[tech]*2)), mass:1,
+                    x:0, y:0, vx:0, vy:0 };
+        nodes.push(n); nodeMap[n.id] = n;
+    });
+    projects.forEach(p => (p.tags||[]).forEach(tag => {
+        if (topTechs.includes(tag)) edges.push({ source:p.id, target:`tech:${tag}` });
+    }));
+    return { nodes, edges, nodeMap };
+}
+
+function runForceSimulation(nodes, edges, W, H) {
+    const nodeMap = {};
+    nodes.forEach(n => nodeMap[n.id] = n);
+
+    const proj = nodes.filter(n => n.type === 'project');
+    const tech = nodes.filter(n => n.type === 'tech');
+
+    // Project nodes are FIXED on an outer ring — they never move
+    proj.forEach((n, i) => {
+        const a = (2 * Math.PI * i / proj.length) - Math.PI / 2;
+        n.x = W / 2 + PROJ_RING_R * Math.cos(a);
+        n.y = H / 2 + PROJ_RING_R * Math.sin(a);
+        n.fixed = true;
+    });
+
+    // Tech nodes start near the center with spread
+    tech.forEach((n, i) => {
+        const a = (2 * Math.PI * i / tech.length);
+        const r = 50 + (i % 3) * 25;
+        n.x = W / 2 + r * Math.cos(a);
+        n.y = H / 2 + r * Math.sin(a);
+        n.fixed = false;
+    });
+
+    // Only tech nodes participate in simulation
+    for (let iter = 0; iter < 400; iter++) {
+        const k = Math.max(0.005, 0.5 * Math.exp(-iter * 0.012));
+
+        // Repulsion between all tech nodes
+        for (let i = 0; i < tech.length; i++) {
+            for (let j = i + 1; j < tech.length; j++) {
+                const a = tech[i], b = tech[j];
+                const dx = (b.x - a.x) || 0.1, dy = (b.y - a.y) || 0.1;
+                const d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+                const f = (900 / d / d) * k;
+                a.vx -= dx / d * f; a.vy -= dy / d * f;
+                b.vx += dx / d * f; b.vy += dy / d * f;
+            }
+        }
+
+        // Spring: pull tech toward connected project nodes
+        edges.forEach(({ source, target }) => {
+            const proj_n = nodeMap[source], tech_n = nodeMap[target];
+            if (!proj_n || !tech_n || tech_n.fixed) return;
+            const dx = proj_n.x - tech_n.x, dy = proj_n.y - tech_n.y;
+            const d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+            const rest = PROJ_RING_R * 0.55; // pull tech toward inner zone
+            const disp = (d - rest) * 0.12 * k;
+            tech_n.vx += dx / d * disp;
+            tech_n.vy += dy / d * disp;
+        });
+
+        // Gentle center pull to prevent drift
+        tech.forEach(n => {
+            n.vx += (W / 2 - n.x) * 0.008 * k;
+            n.vy += (H / 2 - n.y) * 0.008 * k;
+            n.vx *= 0.78; n.vy *= 0.78;
+            n.x += n.vx; n.y += n.vy;
+            const pad = n.r + 12;
+            n.x = Math.max(pad, Math.min(W - pad, n.x));
+            n.y = Math.max(pad, Math.min(H - pad, n.y));
+        });
+
+        // Tech-tech separation
+        for (let i = 0; i < tech.length; i++) {
+            for (let j = i + 1; j < tech.length; j++) {
+                const a = tech[i], b = tech[j];
+                const dx = (b.x - a.x) || 0.01, dy = (b.y - a.y) || 0.01;
+                const d = Math.sqrt(dx * dx + dy * dy);
+                const min = a.r + b.r + 10;
+                if (d < min) {
+                    const c = (min - d) / 2 / d;
+                    a.x -= dx * c; a.y -= dy * c;
+                    b.x += dx * c; b.y += dy * c;
+                }
+            }
+        }
     }
-
-    container.innerHTML = html;
 }
 
-// Create 2-letter initials for a company name.
-function getCompanyInitials(company = '') {
-    const base = company.split('-')[0].trim();
-    const words = base.replace(/[^A-Za-z0-9 ]/g, '').split(' ').filter(Boolean);
-    const initials = words.slice(0, 2).map(word => word[0]).join('').toUpperCase();
-    return initials || 'CO';
+function buildGraphHTML(nodes, edges, nodeMap) {
+    const cx = GRAPH_W / 2, cy = GRAPH_H / 2;
+
+    const edgeSVG = edges.map(({ source, target }) => {
+        const a = nodeMap[source], b = nodeMap[target];
+        if (!a || !b) return '';
+        return `<line class="graph-edge" data-source="${source}" data-target="${target}"
+                     x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}"
+                     x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}"/>`;
+    }).join('');
+
+    const nodeSVG = nodes.map(n => {
+        const tx = n.x.toFixed(1), ty = n.y.toFixed(1);
+
+        if (n.type === 'project') {
+            // Label points outward from the center of the ring
+            const angle  = Math.atan2(n.y - cy, n.x - cx);
+            const outDist = n.r + 14;
+            const lx = Math.cos(angle) * outDist;
+            const ly = Math.sin(angle) * outDist;
+            const anchor = Math.abs(Math.cos(angle)) < 0.35
+                ? 'middle'
+                : Math.cos(angle) > 0 ? 'start' : 'end';
+
+            const words = n.label.split(' ');
+            // Split into max 2 lines
+            const half = Math.ceil(words.length / 2);
+            const l1   = words.slice(0, half).join(' ');
+            const l2   = words.slice(half).join(' ');
+            const lineH = 12;
+            // Vertical centering for multi-line: shift up by half the total height
+            const totalH = l2 ? lineH : 0;
+            const labelSVG = l2
+                ? `<tspan x="${lx.toFixed(1)}" dy="${(ly - totalH / 2).toFixed(1)}">${l1}</tspan>
+                   <tspan x="${lx.toFixed(1)}" dy="${lineH}">${l2}</tspan>`
+                : `<tspan x="${lx.toFixed(1)}" dy="${ly.toFixed(1)}">${l1}</tspan>`;
+
+            return `<g class="graph-node graph-project" data-id="${n.id}"
+                       transform="translate(${tx},${ty})" tabindex="0" role="button">
+                        <circle r="${n.r}" class="proj-circle proj-circle-${n.colorName}" data-color="${n.colorName}"/>
+                        <text class="graph-proj-label" text-anchor="${anchor}">${labelSVG}</text>
+                    </g>`;
+        } else {
+            return `<g class="graph-node graph-tech" data-id="${n.id}"
+                       transform="translate(${tx},${ty})">
+                        <circle r="${n.r}" class="tech-circle"/>
+                        <text class="graph-tech-label" text-anchor="middle" dy="${n.r + 11}">${n.label}</text>
+                    </g>`;
+        }
+    }).join('');
+
+    return `
+        <svg class="proj-graph-svg" viewBox="0 0 ${GRAPH_W} ${GRAPH_H}"
+             width="100%" height="${GRAPH_H}"
+             role="img" aria-label="Project-technology graph">
+            <g class="graph-edges">${edgeSVG}</g>
+            <g class="graph-nodes">${nodeSVG}</g>
+        </svg>
+        <div class="graph-hint">Hover tech nodes · Click project to explore</div>`;
 }
 
-// ===== Projects =====
-// Renders projects in a responsive grid.
+function setupGraphInteractions(container, nodes, nodeMap, onActivate) {
+    const svg = container.querySelector('.proj-graph-svg');
+    if (!svg) return;
+    const edgeEls    = Array.from(svg.querySelectorAll('.graph-edge'));
+    const nodeEls    = Array.from(svg.querySelectorAll('.graph-node'));
+    const projEls    = Array.from(svg.querySelectorAll('.graph-project'));
+    const techEls    = Array.from(svg.querySelectorAll('.graph-tech'));
+
+    const clearState = () => {
+        edgeEls.forEach(e => e.classList.remove('is-dim','is-lit'));
+        nodeEls.forEach(n => n.classList.remove('is-dim','is-lit'));
+    };
+    const dimAll = () => {
+        edgeEls.forEach(e => e.classList.add('is-dim'));
+        nodeEls.forEach(n => n.classList.add('is-dim'));
+    };
+
+    techEls.forEach(el => {
+        const id = el.dataset.id;
+        el.addEventListener('mouseenter', () => {
+            dimAll();
+            edgeEls.forEach(e => {
+                if (e.dataset.target === id) {
+                    e.classList.remove('is-dim'); e.classList.add('is-lit');
+                    svg.querySelector(`[data-id="${e.dataset.source}"]`)?.classList.remove('is-dim');
+                }
+            });
+            el.classList.remove('is-dim'); el.classList.add('is-lit');
+        });
+        el.addEventListener('mouseleave', clearState);
+    });
+
+    projEls.forEach(el => {
+        const id = el.dataset.id;
+        el.addEventListener('mouseenter', () => {
+            dimAll();
+            edgeEls.forEach(e => {
+                if (e.dataset.source === id) {
+                    e.classList.remove('is-dim'); e.classList.add('is-lit');
+                    svg.querySelector(`[data-id="${e.dataset.target}"]`)?.classList.remove('is-dim');
+                }
+            });
+            el.classList.remove('is-dim'); el.classList.add('is-lit');
+        });
+        el.addEventListener('mouseleave', clearState);
+        el.addEventListener('click', () => {
+            projEls.forEach(e => e.classList.remove('is-selected'));
+            el.classList.add('is-selected');
+            const n = nodeMap[id];
+            if (n) onActivate(n.project, n.num);
+        });
+        el.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); el.click(); } });
+    });
+}
+
+function activateGraphDetail(container, project, num) {
+    const wrapper = container.querySelector('.proj-graph-detail');
+    if (!wrapper) return;
+    const colorName = getProjectColorName(project);
+    const isFirst   = wrapper.hasAttribute('hidden');
+
+    const render = () => {
+        wrapper.removeAttribute('hidden');
+        wrapper.innerHTML = `
+            <div class="proj-detail c-${colorName}">
+                <div class="proj-detail-top-line"></div>
+                ${renderDetailPanel(project, num)}
+            </div>`;
+        setTimeout(() => wrapper.scrollIntoView({ behavior:'smooth', block:'nearest' }), 100);
+    };
+
+    if (isFirst) {
+        render();
+    } else {
+        const detailEl = wrapper.querySelector('.proj-detail');
+        if (detailEl) detailEl.classList.add('switching');
+        setTimeout(render, 160);
+    }
+}
+
+function renderDetailPanel(project, num) {
+    const color  = getProjectColorName(project);
+    const isWIP  = project.status === 'in-progress';
+    const isPwC  = (project.id||'').includes('pwc');
+    const badge  = isWIP ? `<span class="proj-detail-badge wip">● In progress</span>`
+                 : isPwC ? `<span class="proj-detail-badge pwc">PwC engagement</span>` : '';
+
+    const caseHTML = (() => {
+        if (!project.caseStudy) return '';
+        const rows = [
+            {label:'Context', text:project.caseStudy.context},
+            {label:'My role', text:project.caseStudy.role},
+            {label:'Outcome', text:project.caseStudy.outcome},
+        ].filter(r=>r.text);
+        return rows.length ? `<div class="proj-detail-case">${rows.map(r=>`
+            <div class="case-row"><span class="case-label">${r.label}</span><span class="case-text">${r.text}</span></div>`).join('')}</div>` : '';
+    })();
+
+    const stack = (project.tags||[]).map(t=>`<span>${t}</span>`).join('');
+    const linkDefs = [{key:'code',label:'Code'},{key:'demo',label:'Demo'},{key:'doc',label:'Docs'},{key:'website',label:'Website'}];
+    const links = linkDefs.filter(d=>project[d.key]).map(d=>`<a href="${project[d.key]}" class="project-link" target="_blank" rel="noopener">↗ ${d.label}</a>`).join('');
+    const noteHTML = (!links && project.note) ? `<p class="proj-note">${project.note}</p>` : '';
+
+    return `
+        <div class="proj-detail-inner">
+            <div class="proj-detail-num">${String(num).padStart(2,'0')}</div>
+            <div class="proj-detail-meta">
+                <span class="proj-detail-type">${project.type||project.group||''}</span>${badge}
+            </div>
+            <h3 class="proj-detail-title">${project.title||''}</h3>
+            <p class="proj-detail-desc">${project.description||project.summary||''}</p>
+            ${caseHTML}
+            ${stack?`<div class="proj-detail-stack">${stack}</div>`:''}
+            ${links?`<div class="proj-detail-links">${links}</div>`:noteHTML}
+        </div>`;
+}
+
 async function renderProjects() {
     const container = document.getElementById('projects');
     if (!container) return;
-
+    container.innerHTML = createSkeleton();
     const data = await fetchJSON('data/projects.json');
-    const cvUrl = document.body?.dataset?.cvUrl || '';
-    const groupOrder = [
-        'Data & Analytics',
-        'Systems & Architecture',
-        'Cloud & Machine Learning',
-        'Backend / APIs',
-        'Product & Fintech'
-    ];
-    const filterOptions = [
-        { key: 'all', label: 'All', group: null },
-        { key: 'data', label: 'Data & Analytics', group: 'Data & Analytics' },
-        { key: 'systems', label: 'Systems', group: 'Systems & Architecture' },
-        { key: 'cloud', label: 'Cloud/ML', group: 'Cloud & Machine Learning' },
-        { key: 'backend', label: 'Backend', group: 'Backend / APIs' },
-        { key: 'product', label: 'Product', group: 'Product & Fintech' }
-    ];
-    let html = `
-        <h2>Projects</h2>
-        <p>Selected work focused on audit analytics, data engineering, and systems that turn messy data into decisions.</p>
-        <div class="projects-tldr">
-            <div class="tldr-items">
-                <span>Risk Assurance Associate · PwC Indonesia</span>
-                <span>Scale: 1M+ monthly banking records</span>
-                <span>Domains: Data pipelines • Systems • Cloud/ML</span>
-            </div>
-            <div class="tldr-actions">
-                <a href="#featured-projects" class="tldr-link">View featured</a>
-                ${cvUrl ? `<a href="${cvUrl}" class="tldr-link" target="_blank" rel="noopener">Download CV</a>` : ''}
-            </div>
-        </div>
-        <div class="projects-filters">
-            ${filterOptions.map(option => `
-                <button class="filter-chip${option.key === 'all' ? ' is-active' : ''}" data-filter="${option.key}" data-group="${option.group || ''}">
-                    ${option.label}
-                </button>
-            `).join('')}
-        </div>
-        <div class="what-i-do">
-            <h3>What I Do</h3>
-            <ul class="what-i-do-list">
-                <li>Build scalable data pipelines and analytics workflows for regulated environments.</li>
-                <li>Design systems that connect data, processes, and technology across teams.</li>
-                <li>Apply audit, governance, and engineering thinking to real-world problems.</li>
-            </ul>
-        </div>
-    `;
+    if (!data) { container.innerHTML = sectionShell('04', 'Selected projects', createErrorCard('projects')); return; }
 
-    if (data && data.length) {
-        const featured = data.filter(project => project.featured);
-        if (featured.length) {
-            html += `
-                <div class="featured-projects" id="featured-projects">
-                    <div class="featured-header">
-                        <h3>Featured Projects</h3>
-                        <p>High-impact work where I led the core data, system, and delivery pieces.</p>
-                    </div>
-                    <div class="featured-projects-grid">
-                        ${featured.map(project => `
-                            ${renderProjectCard(project, { featured: true })}
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
+    const cvUrl  = document.body?.dataset?.cvUrl || '';
+    const cvLink = cvUrl ? `<div class="proj-cv-row"><a href="${cvUrl}" class="btn-ghost" target="_blank" rel="noopener">↓ Download CV</a></div>` : '';
 
-        groupOrder.forEach(group => {
-            const grouped = data
-                .filter(project => project.group === group)
-                .sort((a, b) => {
-                    if (Number.isFinite(a.priority) && Number.isFinite(b.priority)) {
-                        return a.priority - b.priority;
-                    }
-                    if (Number.isFinite(a.priority)) return -1;
-                    if (Number.isFinite(b.priority)) return 1;
-                    return 0;
-                });
-            if (!grouped.length) return;
-            html += `
-                <div class="project-group" data-group="${group}">
-                    <div class="project-group-header">
-                        <h3>${group}</h3>
-                    </div>
-                    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                        ${grouped.map((project, index) => `
-                            ${renderProjectCard(project, { index })}
-                        `).join('')}
-                    </div>
-                    <div class="project-group-actions">
-                        <button class="show-more-btn" data-action="toggle-group" data-group="${group}">
-                            Show more
-                        </button>
-                    </div>
-                </div>
-            `;
+    container.innerHTML = sectionShell('04', 'Selected projects', `
+        <div class="proj-graph-container"></div>
+        <div class="proj-graph-detail" hidden></div>
+        ${cvLink}
+    `);
+
+    // Build graph after DOM is laid out so clientWidth is accurate
+    setTimeout(() => {
+        const graphContainer = container.querySelector('.proj-graph-container');
+        const { nodes, edges, nodeMap } = buildGraphData(data);
+        runForceSimulation(nodes, edges, GRAPH_W, GRAPH_H);
+        graphContainer.innerHTML = buildGraphHTML(nodes, edges, nodeMap);
+        setupGraphInteractions(graphContainer, nodes, nodeMap, (project, num) => {
+            activateGraphDetail(container, project, num);
         });
-    } else {
-        html += `
-            <div class="card">
-                <h3>Sample Project</h3>
-                <div class="card-subtitle">WEB APP</div>
-                <div class="badge-container"><span class="badge">JavaScript</span><span class="badge">UI/UX</span></div>
-                <p class="project-description">A short description of a past project.</p>
-            </div>
-        `;
-    }
-
-    container.innerHTML = html;
-    if (!document.getElementById('project-modal')) {
-        document.body.insertAdjacentHTML('beforeend', renderProjectModalShell());
-    }
-    setupProjectModal(document, data || []);
-    setupProjectGroups(container);
-    setupProjectFilters(container);
-}
-
-function renderProjectCard(project, { featured = false, index = 0 } = {}) {
-    const limitedTags = renderBadges(project.tags, 5);
-    const hideByDefault = index > 1 && !featured ? ' is-hidden' : '';
-    return `
-        <div class="card project-card flex flex-col h-full${featured ? ' featured-card' : ''}${hideByDefault}" id="project-${project.id}" data-project-id="${project.id}">
-            <div class="project-media flex justify-center items-center py-8">
-                ${project.image ? `
-                    <img src="${project.image}" alt="${project.title} Screenshot" class="object-contain max-h-32 w-auto" loading="lazy">
-                ` : `
-                    <div class="w-full h-32 flex items-center justify-center text-4xl text-gray-600">
-                        <i class="fa-solid fa-image"></i>
-                    </div>
-                `}
-            </div>
-            <div class="project-content flex flex-col flex-1 px-6 pt-4 pb-0">
-                <div class="project-header">
-                    <h3 class="project-title">${project.title}</h3>
-                    ${project.type ? `<div class="project-type">${project.type}</div>` : ''}
-                    ${project.impact ? `<p class="project-subtitle">${project.impact}</p>` : ''}
-                </div>
-                ${limitedTags ? `<div class="tags-compact">${limitedTags}</div>` : ''}
-                <div class="card-hint">Click for details</div>
-            </div>
-        </div>
-    `;
-}
-
-function renderCaseStudy(caseStudy = {}) {
-    if (!caseStudy || (!caseStudy.context && !caseStudy.role && !caseStudy.outcome)) {
-        return '';
-    }
-    const rows = [
-        { label: 'Context', text: caseStudy.context },
-        { label: 'My role', text: caseStudy.role },
-        { label: 'Outcome', text: caseStudy.outcome }
-    ].filter(row => row.text);
-
-    if (!rows.length) return '';
-
-    return `
-        <div class="project-case">
-            ${rows.map(row => `
-                <div class="case-row">
-                    <span class="case-label">${row.label}</span>
-                    <span class="case-text">${row.text}</span>
-                </div>
-            `).join('')}
-        </div>
-    `;
-}
-
-function renderProjectModalShell() {
-    return `
-        <div class="project-modal" id="project-modal" aria-hidden="true">
-            <div class="project-modal-backdrop" data-action="close-modal"></div>
-            <div class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-                <button class="modal-close" data-action="close-modal" aria-label="Close project details">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="modal-header">
-                    <h3 id="project-modal-title"></h3>
-                    <div class="modal-type"></div>
-                </div>
-                <p class="modal-subtitle"></p>
-                <div class="modal-body">
-                    <div class="modal-description"></div>
-                    <div class="modal-case"></div>
-                    <div class="modal-tags"></div>
-                    <div class="modal-links"></div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function setupProjectModal(rootNode, projects = []) {
-    const root = rootNode || document;
-    const modal = document.getElementById('project-modal');
-    if (!modal) return;
-
-    const projectMap = new Map(projects.map(project => [project.id, project]));
-    const titleEl = modal.querySelector('#project-modal-title');
-    const typeEl = modal.querySelector('.modal-type');
-    const subtitleEl = modal.querySelector('.modal-subtitle');
-    const descriptionEl = modal.querySelector('.modal-description');
-    const caseEl = modal.querySelector('.modal-case');
-    const tagsEl = modal.querySelector('.modal-tags');
-    const linksEl = modal.querySelector('.modal-links');
-
-    const closeModal = () => {
-        modal.classList.remove('is-active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    };
-
-    const openModal = (project) => {
-        if (!project) return;
-        titleEl.textContent = project.title || '';
-        typeEl.textContent = project.type || '';
-        subtitleEl.textContent = project.impact || '';
-        descriptionEl.innerHTML = project.description ? `<p>${project.description}</p>` : '';
-        caseEl.innerHTML = project.caseStudy ? renderCaseStudy(project.caseStudy) : '';
-        tagsEl.innerHTML = project.tags ? renderBadges(project.tags) : '';
-        linksEl.innerHTML = project ? renderProjectLinks(project) : '';
-
-        modal.classList.add('is-active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    };
-
-    document.addEventListener('click', (event) => {
-        const openCard = event.target.closest('.project-card');
-        const closeBtn = event.target.closest('[data-action="close-modal"]');
-        if (openCard && !closeBtn) {
-            const projectId = openCard.getAttribute('data-project-id');
-            openModal(projectMap.get(projectId));
-        }
-        if (closeBtn) {
-            closeModal();
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.classList.contains('is-active')) {
-            closeModal();
-        }
-    });
-}
-
-function setupProjectGroups(container) {
-    const groups = container.querySelectorAll('.project-group');
-    groups.forEach(group => {
-        const cards = group.querySelectorAll('.project-card');
-        const button = group.querySelector('[data-action="toggle-group"]');
-        if (cards.length <= 2 && button) {
-            button.classList.add('is-hidden');
-        }
-    });
-
-    container.addEventListener('click', (event) => {
-        const button = event.target.closest('[data-action="toggle-group"]');
-        if (!button) return;
-
-        const groupName = button.dataset.group;
-        const group = container.querySelector(`.project-group[data-group="${groupName}"]`);
-        if (!group) return;
-
-        const hiddenCards = group.querySelectorAll('.project-card.is-hidden');
-        const isCollapsed = hiddenCards.length > 0;
-        group.querySelectorAll('.project-card').forEach((card, index) => {
-            if (index > 1) {
-                card.classList.toggle('is-hidden', !isCollapsed);
-            }
-        });
-
-        button.textContent = isCollapsed ? 'Show less' : 'Show more';
-    });
-}
-
-function setupProjectFilters(container) {
-    const chips = Array.from(container.querySelectorAll('.filter-chip'));
-    const groups = Array.from(container.querySelectorAll('.project-group'));
-    if (!chips.length || !groups.length) return;
-
-    const setActiveChip = (active) => {
-        chips.forEach(chip => chip.classList.toggle('is-active', chip === active));
-    };
-
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const groupName = chip.dataset.group;
-            setActiveChip(chip);
-
-            if (!groupName) {
-                groups.forEach(group => group.classList.remove('is-hidden'));
-                return;
-            }
-
-            groups.forEach(group => {
-                group.classList.toggle('is-hidden', group.dataset.group !== groupName);
-            });
-
-            const target = container.querySelector(`.project-group[data-group="${groupName}"]`);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-}
-
-// Build project links with icons.
-function renderProjectLinks(project) {
-    const icons = {
-        doc: `<i class="fa-solid fa-file-lines"></i>`,
-        code: `<i class="fa-brands fa-github"></i>`,
-        demo: `<i class="fa-solid fa-play"></i>`,
-        video: `<i class="fa-brands fa-youtube"></i>`,
-        website: `<i class="fa-solid fa-globe"></i>`,
-        figma: `<i class="fa-brands fa-figma"></i>`
-    };
-
-    const labels = {
-        doc: 'Documentation',
-        code: 'Code',
-        demo: 'Demo',
-        video: 'Video',
-        website: 'Website',
-        figma: 'Figma'
-    };
-
-    return Object.keys(icons)
-        .filter(type => project[type])
-        .map(type => `
-            <a href="${project[type]}" class="project-link" target="_blank" rel="noopener">
-                ${icons[type]} ${labels[type]}
-            </a>
-        `)
-        .join('');
+    }, 0);
 }
 
 // ===== Skills =====
-// Renders category-based lists and honors.
 async function renderSkills() {
     const section = document.getElementById('skills');
     if (!section) return;
-
+    section.innerHTML = createSkeleton();
     const data = await fetchJSON('data/skills.json');
-    if (!data) return;
+    if (!data) { section.innerHTML = sectionShell('02', 'Skills', createErrorCard('skills')); return; }
 
-    const skillsHTML = `
-        <div class="card bg-[#17191c]/80 rounded-xl shadow-md border border-white/5 p-6 flex flex-col gap-6">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="inline-block w-6 h-1 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full"></span>
-                    <span class="uppercase tracking-wide text-xl font-bold text-accent-1">Professional Skills</span>
-                </div>
-                ${
-                    (data.professionalSkills || []).map(category => `
-                        <div class="mb-4 text-xs font-semibold uppercase text-gray-400">${category.category}</div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            ${(category.skills || []).map(skill =>
-                                `<span class="badge${category.category === 'Product Skills' ? ' badge-product' : ''}">${skill}</span>`
-                            ).join('')}
-                        </div>
-                    `).join('')
-                }
-            </div>
-        </div>
-    `;
-
-    const honorsHTML = `
-        <div class="card bg-[#17191c]/80 rounded-xl shadow-md border border-white/5 p-6 flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-                <span class="inline-block w-6 h-1 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full"></span>
-                <span class="uppercase tracking-wide text-xl font-bold text-accent-1">Honors & Awards</span>
-            </div>
-            <div class="text-xl text-gray-300 space-y-6">
-                ${
-                    (data.honorsAwards || []).map(honor => `
-                        <div>
-                            <div class="font-semibold text-white mb-1">${honor.title}</div>
-                            <div class="text-xs text-gray-400 mb-1">${honor.date} | ${honor.issuer}</div>
-                            <div class="text-base text-gray-300">${honor.description}</div>
-                        </div>
-                    `).join('')
-                }
-            </div>
-        </div>
-    `;
-
-    section.innerHTML = `
-        <h2 class="text-3xl font-bold mb-2 flex items-center gap-2"><span>Skills & Honors</span></h2>
-        <p class="mb-8 text-gray-400">My professional skills and recognitions.</p>
-        <div class="skills-honors-container grid md:grid-cols-2 gap-8">
-            ${skillsHTML}
-            ${honorsHTML}
-        </div>
-    `;
-}
-
-// ===== UI Interactions =====
-function revealOnScroll() {
-    const sections = document.querySelectorAll('section');
-    const windowHeight = window.innerHeight;
-
-    sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < windowHeight - 100) {
-            section.classList.add('visible');
-        }
-    });
-}
-
-function headerScrollEffect() {
-    const header = document.getElementById('header');
-    if (!header) return;
-
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    const hiGov  = new Set(['ITGC / ITAC testing','ICFR (BPM & RCM design)','Audit analytics & CAATs']);
+    const hiData = new Set(['Python (Pandas, NumPy)','PySpark','SQL','Alteryx']);
+    const hiCloud= new Set(['Google Cloud (Skill Badges)','Cloudera']);
+    function tagCls(s,i) {
+        if (i===0&&hiGov.has(s))  return ' hi';
+        if (i===1&&hiData.has(s)) return ' hi';
+        if (i===2&&hiCloud.has(s))return ' hib';
+        return '';
     }
+
+    const skillsGrid = `<div class="skills-grid">${(data.professionalSkills||[]).map((cat,i)=>`
+        <div class="skill-cat stagger-item">
+            <div class="skill-cat-title">${cat.category}</div>
+            <div class="skill-tags">${(cat.skills||[]).map(s=>`<span class="skill-tag${tagCls(s,i)}">${s}</span>`).join('')}</div>
+        </div>`).join('')}</div>`;
+
+    const honorsHTML = (data.honorsAwards||[]).length ? `
+        <div class="subsection-label">Honors &amp; Awards</div>
+        <div class="honors-grid">${(data.honorsAwards||[]).map(h=>`
+            <div class="honor-item stagger-item">
+                <div class="honor-title">${h.title}</div>
+                <div class="honor-meta">${h.date} · ${h.issuer}</div>
+                <div class="honor-desc">${h.description}</div>
+            </div>`).join('')}</div>` : '';
+
+    section.innerHTML = sectionShell('02', 'Skills', skillsGrid + honorsHTML);
+    observeStaggerItems(section);
 }
 
-function setupMobileMenu() {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const closeMenuBtn = document.getElementById('close-menu');
-    const mobileNav = document.getElementById('mobile-nav');
-    if (!mobileMenuBtn || !closeMenuBtn || !mobileNav) return;
+// ===== Helpers =====
+function sectionShell(num, title, body) {
+    return `<div class="section-header anim"><span class="section-num">${num}</span><h2 class="section-title">${title}</h2></div>${body}`;
+}
 
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+function observeStaggerItems(container) {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    container.querySelectorAll('.stagger-item').forEach(el => io.observe(el));
+}
+function observeSlideIns(container) {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    container.querySelectorAll('.slide-in').forEach((el,i) => { el.style.transitionDelay=`${i*0.08}s`; io.observe(el); });
+}
+function setupGlobalAnimations() {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('section.fade-in').forEach(s => io.observe(s));
+    document.querySelectorAll('.section-header.anim').forEach(h => io.observe(h));
+    setupScrambleObserver();
+}
 
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileNav.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
+// ===== Lenis =====
+function initLenis() {
+    if (typeof Lenis === 'undefined') return;
+    const lenis = new Lenis({ duration: 0.75 });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+}
 
-    closeMenuBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+// ===== Counters =====
+function animateCounters() {
+    document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+        const target=parseFloat(el.dataset.count), prefix=el.dataset.prefix||'',
+              suffix=el.dataset.suffix||'', decimals=parseInt(el.dataset.decimals||'0',10);
+        const duration=1600, start=performance.now();
+        const tick = now => {
+            const p = Math.min((now-start)/duration,1);
+            const e = 1-Math.pow(1-p,3);
+            el.textContent = prefix+(target*e).toFixed(decimals)+suffix;
+            if (p<1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
     });
 }
 
-// Highlight active nav link based on scroll position.
+// ===== Scramble =====
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@$!%&*';
+function scrambleText(el, duration=850) {
+    if (el._sFrame) { cancelAnimationFrame(el._sFrame); el._sFrame=null; }
+    const original = el._sOriginal || el.textContent;
+    el._sOriginal = original;
+    const len = original.length;
+    const isAlphaNum = c => /[a-zA-Z0-9]/.test(c);
+    let t0=null;
+    const animate = ts => {
+        if (!t0) t0=ts;
+        const progress = Math.min((ts-t0)/duration,1);
+        const revealed = Math.floor(progress*len);
+        let out='';
+        for (let i=0;i<len;i++) {
+            const c=original[i];
+            out += (!isAlphaNum(c)||i<revealed) ? c : SCRAMBLE_CHARS[Math.floor(Math.random()*SCRAMBLE_CHARS.length)];
+        }
+        el.textContent=out;
+        if (progress<1) { el._sFrame=requestAnimationFrame(animate); }
+        else { el.textContent=original; el._sFrame=null; el._sOriginal=null; }
+    };
+    el._sFrame=requestAnimationFrame(animate);
+}
+function setupScrambleObserver() {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { scrambleText(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('.section-title').forEach(el => io.observe(el));
+}
+
+// ===== Nav =====
+function headerScrollEffect() {
+    const nav = document.getElementById('header');
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+}
 function setupActiveNav() {
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-    const allLinks = [...navLinks, ...mobileLinks];
-    const sections = Array.from(document.querySelectorAll('section'));
-
-    const setActiveById = (id) => {
-        allLinks.forEach(link => link.classList.remove('active'));
-        const selector = `.nav-links a[href="#${id}"], .mobile-nav-links a[href="#${id}"]`;
-        document.querySelectorAll(selector).forEach(link => link.classList.add('active'));
+    const links   = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections= Array.from(document.querySelectorAll('section[id]'));
+    const setActive = id => links.forEach(l => l.classList.toggle('active', l.getAttribute('href')===`#${id}`));
+    links.forEach(l => l.addEventListener('click', () => {
+        const id=(l.getAttribute('href')||'').replace('#',''); if (id) setActive(id);
+    }));
+    const update = () => {
+        let current=sections[0]?.id;
+        sections.forEach(s => { if (s.getBoundingClientRect().top-110<=0) current=s.id; });
+        if (current) setActive(current);
     };
-
-    // Click state for immediate feedback.
-    allLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            const hash = link.getAttribute('href');
-            if (!hash) return;
-            const id = hash.replace('#', '');
-            if (id) setActiveById(id);
-        });
-    });
-
-    // Scroll spy (manual) to keep state accurate.
-    const updateOnScroll = () => {
-        const offset = 140;
-        let current = sections[0]?.id;
-        sections.forEach(section => {
-            const top = section.getBoundingClientRect().top;
-            if (top - offset <= 0) {
-                current = section.id;
-            }
-        });
-        if (current) setActiveById(current);
-    };
-
-    updateOnScroll();
-    window.addEventListener('scroll', updateOnScroll);
+    update();
+    window.addEventListener('scroll', debounce(update,80), { passive:true });
 }
 
-// ===== Bootstrapping =====
+// ===== Bootstrap =====
 async function loadContent() {
-    await Promise.all([
-        renderEducation(),
-        renderExperiences(),
-        renderProjects(),
-        renderSkills()
-    ]);
+    await Promise.all([renderEducation(), renderExperiences(), renderProjects(), renderSkills()]);
+    setupGlobalAnimations();
 }
-
 document.addEventListener('DOMContentLoaded', async () => {
-    // Render content first so headings exist for nav dots.
+    initLenis();
     await loadContent();
-
-    // Initialize UI behaviors.
-    revealOnScroll();
     headerScrollEffect();
-    setupMobileMenu();
     setupActiveNav();
-
-    // Keep UI in sync.
-    window.addEventListener('scroll', () => {
-        revealOnScroll();
-        headerScrollEffect();
-    });
+    setTimeout(() => {
+        animateCounters();
+        const eyebrow = document.querySelector('.hero-eyebrow');
+        if (eyebrow) scrambleText(eyebrow, 700);
+    }, 900);
+    window.addEventListener('scroll', debounce(headerScrollEffect,80), { passive:true });
 });

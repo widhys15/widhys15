@@ -1,12 +1,14 @@
 {
   "professionalSkills": [
     {
-      "category": "IT Audit & Governance",
+      "category": "IT Governance & Audit",
       "skills": [
         "ITGC / ITAC testing",
-        "ICFR (BPM & RCM)",
+        "ICFR (BPM & RCM design)",
         "Control evaluation & walkthroughs",
-        "Audit analytics & CAATs"
+        "Operating effectiveness testing",
+        "Audit analytics & CAATs",
+        "SAP environments"
       ]
     },
     {
@@ -14,7 +16,7 @@
       "skills": [
         "Python (Pandas, NumPy)",
         "SQL",
-        "JavaScript",
+        "JavaScript / TypeScript",
         "PySpark",
         "Hive",
         "Alteryx",
@@ -37,14 +39,15 @@
       ]
     },
     {
-      "category": "Product & Analysis",
+      "category": "Advisory & Communication",
       "skills": [
-        "Analytical thinking",
-        "Documentation & reporting",
+        "IT controls consulting",
         "Stakeholder coordination",
+        "Training & enablement",
         "Cross-functional collaboration",
         "Business process mapping",
-        "Requirements analysis"
+        "Requirements analysis",
+        "Documentation & reporting"
       ]
     }
   ],
@@ -53,7 +56,7 @@
       "title": "My Digital Academy Awardee",
       "issuer": "Bank Mandiri",
       "date": "December 2023",
-      "description": "Developed skills in product development principles including user segmentation, wireframing, and MVP definition. Built a fintech prototype called Budget Buddies using OutSystems to improve children’s financial literacy as a final project."
+      "description": "Selected participant in Bank Mandiri's fintech product development program. Designed a financial literacy prototype (BudgetBuddies) for teenagers — applying product principles including user segmentation, wireframing, and MVP definition."
     },
     {
       "title": "Bangkit Academy 2023 – Cloud Computing Cohort",

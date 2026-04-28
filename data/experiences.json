@@ -5,15 +5,16 @@
     "company": "PwC Indonesia - Jakarta, Indonesia",
     "logo": "images/logos/pwc.png",
     "period": "July 2024 - Present",
-    "tags": ["ITGC", "ITAC", "ICFR", "CAATs", "PySpark"],
+    "tags": ["ITGC", "ITAC", "ICFR", "BPM/RCM", "CAATs", "Alteryx", "PySpark"],
     "description": [
-      "Executed ITGC (access to programs and data, change management, computer operations, program development) and ITAC audits across SAP and non-SAP financial systems, supporting reliable financial reporting.",
-      "Performed process walkthroughs, evidence review, and assessment of configuration-based and IT-dependent controls impacting financial reporting.",
-      "Conducted journal entry testing and analytics using Alteryx, reducing manual testing effort by ~20–30% through structured filtering and anomaly identification.",
-      "Applied CAATs using Alteryx to extract, validate, and analyze datasets with 100K+ records, improving audit coverage and consistency.",
-      "Prepared and updated BPM and RCM documentation for ITGC processes as part of an ICFR implementation project.",
-      "Coordinated with financial audit teams and senior associates across concurrent engagements during peak periods.",
-      "Contributed to a PySpark-based pipeline on Cloudera/Hive for large-scale banking data analysis (1M+ monthly records)."
+      "Executed ITGC and ITAC audits across SAP and non-SAP financial systems spanning banking, retail, energy, and telecoms — covering access management, change management, computer operations, and program development.",
+      "Performed process walkthroughs, evidence review, and assessment of configuration-based and IT-dependent controls impacting financial reporting across multiple concurrent engagements.",
+      "Applied CAATs using Alteryx to extract, validate, and analyze datasets with 100K+ records, reducing manual testing effort by ~20–30% through structured filtering and anomaly identification.",
+      "Advised clients on improving and formalizing IT control environments as part of ICFR implementation — mapping controls into Business Process Models (BPM) and Risk & Control Matrices (RCM).",
+      "Supported clients in ensuring controls operate effectively as defined — conducting re-performance testing and evidence validation to confirm operating effectiveness post-implementation.",
+      "Leading internal adoption of audit analytics tooling — training colleagues on Alteryx and data analytics workflows, and building automation that replaced manual team utilization reporting.",
+      "Built Alteryx workflows to automate team utilization reporting, enabling more efficient revenue tracking and reducing manual operational effort.",
+      "Contributed to a PySpark pipeline on Cloudera/Hive for a banking analytics engagement, preprocessing large-scale contract transaction data to support ML-driven branch trend analysis."
     ],
     "order": 1
   },
@@ -22,7 +23,7 @@
     "title": "Information System Laboratory Assistant",
     "company": "ITB Information System Laboratory - Bandung, Indonesia",
     "logo": "images/logos/itb.png",
-    "period": "2022 - 2024",
+    "period": "September 2022 - June 2024",
     "tags": ["Mentoring", "System Analysis", "Enterprise Architecture"],
     "description": [
       "Mentored student projects in system analysis, enterprise architecture, UX/UI, SDLC, and project management.",
@@ -39,10 +40,7 @@
     "tags": ["IoT", "Product Research", "Process Mapping", "Market Analysis"],
     "description": [
       "Conducted process mapping, requirement analysis, benchmarking, and user research to define features, user flows, and subscription concepts for an IoT energy monitoring platform.",
-      "Conducted IoT industry research related to manufacturing efficiency and energy monitoring.",
-      "Performed process mapping, requirement analysis, and competitor benchmarking.",
-      "Translated research insights into product features and subscription concepts.",
-      "Evaluated product-market fit using surveys and trend analysis."
+      "Evaluated product-market fit using surveys and trend analysis in the manufacturing energy monitoring space."
     ],
     "order": 3
   },
@@ -55,10 +53,7 @@
     "tags": ["Python", "Monitoring", "Grafana", "IT Governance"],
     "description": [
       "Developed Python (Pandas) log-processing scripts for operational monitoring and integrated Telegram Bot API with Grafana alerts, improving incident response by ~30%.",
-      "Built Python (Pandas) scripts for log processing and operational monitoring.",
-      "Integrated Grafana alerts with Telegram Bot API, improving incident response time.",
-      "Supported IT data governance, audit coordination, and operational documentation.",
-      "Participated in IT operations monitoring and documentation."
+      "Supported IT data governance, audit coordination, and operational documentation."
     ],
     "order": 4
   },
@@ -70,8 +65,8 @@
     "period": "December 2023 - January 2024",
     "tags": ["Fintech", "Product Design", "Prototyping"],
     "description": [
-      "Selected participant in fintech product development program.",
-      "Designed a financial literacy prototype for teenagers and applied product principles (user segmentation, wireframing, MVP definition)."
+      "Selected participant in Bank Mandiri's fintech product development program.",
+      "Designed a financial literacy prototype (BudgetBuddies) for teenagers — applying product principles including user segmentation, wireframing, and MVP definition."
     ],
     "order": 5
   },
@@ -83,9 +78,9 @@
     "period": "February 2023 - July 2023",
     "tags": ["Cloud Computing", "GCP", "Web Programming"],
     "description": [
-      "Learned cloud computing, networking, system administration, and web programming.",
-      "Built and deployed cloud-native applications using Google Cloud Platform (GCP).",
-      "Contributed to the Promosee capstone project (cloud + ML)."
+      "Developed skills in cloud computing, networking, system administration, and web programming.",
+      "Built and deployed cloud-native applications using Google Cloud Platform (GCP). Earned Google Cloud Skill Badges.",
+      "Contributed to the Promosee capstone project integrating cloud infrastructure with ML model serving."
     ],
     "order": 6
   }
