@@ -2,4 +2,6 @@
 node_modules/
 dist/
 .DS_Store
+*.tsbuildinfo
 SKILL design motion.md
+wid_portfolio_v3_itgov.html
