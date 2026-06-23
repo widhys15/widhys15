@@ -1,20 +1,21 @@
 [
   {
     "id": "idx-screener",
-    "title": "IDX Stock Screener",
-    "summary": "A rule-based multi-layer screener for Indonesia Stock Exchange (IDX) swing trading — replacing tip-driven decisions with systematic analysis.",
-    "description": "Building a rule-based screener for IDX swing trading that integrates market data, technical signals, volume analysis, and risk/reward scoring into a structured evaluation framework. Designed to enforce discipline and eliminate intuition-driven stock selection.",
-    "impact": "Systematic, rule-based stock evaluation for IDX swing trading.",
+    "title": "IDX Swing Trading Dashboard",
+    "summary": "A working VPA-driven swing-trading dashboard for the Indonesia Stock Exchange — accumulation detection, broker-flow tracking, and risk-managed entries, built solo across off-season weekends.",
+    "description": "A multi-strategy screener and dashboard for IDX swing trading, built during weekend sessions across PwC's slow months. The core VPA (Volume-Price Analysis) engine detects accumulation using ADL slope, volume quality ratio, and Wyckoff phase classification — surfacing a confidence-scored verdict per ticker rather than raw indicator soup. Includes a broker-flow scraper for tracking big-player activity, a Position Health Panel for managing open trades, and switchable strategies (VPA, Reversal, Breakout, Momentum).",
+    "impact": "Real, working trading tool used on live IDX data — not a concept or mockup.",
     "caseStudy": {
-      "context": "Needed a disciplined, repeatable approach to IDX stock selection beyond tips and gut feel.",
-      "role": "Designing the screening logic, scoring engine, and data pipeline from scratch.",
-      "outcome": "A personal tool for systematic swing trade evaluation on the Indonesian market."
+      "context": "Needed a disciplined, repeatable approach to IDX stock selection beyond tips and gut feel — the anti-thesis of chasing hype tickers.",
+      "role": "Designed and built the VPA scoring engine, broker-flow scraper, Position Health Panel, and multi-strategy screener UI solo, end-to-end.",
+      "outcome": "A daily-use personal tool for systematic swing-trade evaluation, built and iterated entirely during off-season weekends."
     },
-    "tags": ["TypeScript", "Yahoo Finance API", "IDX", "Rule Engine", "TradingView"],
+    "tags": ["React", "Vite", "TypeScript", "VPA Engine", "Wyckoff Analysis", "IDX", "TradingView"],
     "type": "Personal Project",
     "group": "Finance & Data",
     "featured": true,
-    "status": "in-progress",
+    "flagship": true,
+    "status": "improving",
     "image": "images/projects/idx-screener.png",
     "code": "",
     "demo": "",
@@ -22,17 +23,39 @@
     "note": "Private repository — reach out if you'd like to discuss the approach."
   },
   {
+    "id": "hyperliquid-bot",
+    "title": "Hyperliquid Copy-Trading Bot",
+    "summary": "A live-execution-hardened copy-trading bot for Hyperliquid perpetuals, built through a month of weekend sessions with dry-run defaults and confirmation gates.",
+    "description": "A copy-trading bot for Hyperliquid perpetual futures, built over roughly a month of weekend sessions through sequential AI-assisted prompting. Mirrors target wallet positions with configurable sizing, defaults to dry-run mode, and requires explicit confirmation gates before any live order leaves the sandbox — a deliberate guardrail given it touches real funds. Terminal-only; no UI.",
+    "impact": "Hardened a side project to a live-execution-safe state, with dry-run defaults and confirmation gates before any real trade.",
+    "caseStudy": {
+      "context": "Wanted to test how far AI-assisted, prompt-driven development could go on something with real financial risk attached, not just a toy script.",
+      "role": "Built the wallet-mirroring logic, sizing, dry-run mode, and confirmation gates through iterative prompting, end-to-end.",
+      "outcome": "A working, safety-gated copy-trading bot, built in about a month of weekend sessions."
+    },
+    "tags": ["Hyperliquid API", "Trading Bot", "Risk Controls", "Dry-Run Safety", "AI-Assisted Development"],
+    "type": "Personal Project",
+    "group": "Finance & Data",
+    "featured": false,
+    "status": "improving",
+    "image": "",
+    "code": "",
+    "demo": "",
+    "doc": "",
+    "note": "Terminal-only — no public demo. Reach out if you'd like to discuss the approach."
+  },
+  {
     "id": "ai-finance-pwc",
     "title": "AI for Finance - PwC Project for Banking Client (2025)",
-    "summary": "Built PySpark pipelines on Cloudera/Hive to preprocess large-scale banking contract data for branch-level financial trend analysis.",
-    "description": "Built and maintained PySpark pipelines on Cloudera/Hive to preprocess banking contract data for branch-level financial trend analysis. Focused on data quality checks, feature preparation, and validation aligned with business rules in a regulated environment. Supported downstream analytics and ML workflows with reliable, scalable inputs.",
-    "impact": "Processed and validated large-scale monthly contract records on Cloudera/Hive to support ML-driven branch analysis.",
+    "summary": "Built PySpark pipelines on Cloudera/Hive to preprocess 1M+ monthly banking transactions across 5,000+ branches for financial trend analysis.",
+    "description": "Built and maintained PySpark pipelines on Cloudera/Hive to preprocess 1M+ monthly transaction records across 5,000+ branches for branch-level financial trend analysis. Focused on data quality checks, feature preparation, and validation aligned with business rules in a regulated environment, with unit tests covering core pipeline components. Supported downstream analytics and ML workflows with reliable, scalable inputs.",
+    "impact": "Processed and validated 1M+ monthly contract records across 5,000+ branches on Cloudera/Hive to support ML-driven branch analysis.",
     "caseStudy": {
       "context": "Banking finance analytics needed consistent, high-quality features from raw contract data.",
       "role": "Built PySpark pipelines, data prep, and validation aligned to business rules.",
       "outcome": "Reliable, scalable data foundation for branch-level financial trend analysis."
     },
-    "tags": ["Cloudera", "PySpark", "Hive", "SQL", "Data Engineering"],
+    "tags": ["Cloudera", "PySpark", "Hive", "SQL", "Data Engineering", "Unit Testing"],
     "type": "Data Engineering",
     "group": "Data & Analytics",
     "featured": true,

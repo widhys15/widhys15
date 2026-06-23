@@ -8,13 +8,13 @@
     "tags": ["ITGC", "ITAC", "ICFR", "BPM/RCM", "CAATs", "Alteryx", "PySpark"],
     "description": [
       "Executed ITGC and ITAC audits across SAP and non-SAP financial systems spanning banking, retail, energy, and telecoms — covering access management, change management, computer operations, and program development.",
-      "Performed process walkthroughs, evidence review, and assessment of configuration-based and IT-dependent controls impacting financial reporting across multiple concurrent engagements.",
-      "Applied CAATs using Alteryx to extract, validate, and analyze datasets with 100K+ records, reducing manual testing effort by ~20–30% through structured filtering and anomaly identification.",
-      "Advised clients on improving and formalizing IT control environments as part of ICFR implementation — mapping controls into Business Process Models (BPM) and Risk & Control Matrices (RCM).",
+      "Managed 6–7 concurrent client audits during peak season — performing process walkthroughs, evidence review, and IT control assessments, and reporting control gaps and remediation plans to C-level stakeholders during exit meetings.",
+      "Advised clients — including a local government entity — on improving and formalizing IT control environments as part of ICFR implementation, mapping controls into Business Process Models (BPM) and Risk & Control Matrices (RCM).",
       "Supported clients in ensuring controls operate effectively as defined — conducting re-performance testing and evidence validation to confirm operating effectiveness post-implementation.",
+      "Applied CAATs using Alteryx to extract, validate, and analyze datasets with 100K+ records, reducing manual testing effort by ~20–30% through structured filtering and anomaly identification.",
+      "Contributed to a PySpark pipeline on Cloudera/Hive for a banking analytics engagement — preprocessing 1M+ monthly transaction records across 5,000+ branches, with unit tests covering core pipeline components, to support ML-driven branch trend analysis.",
       "Leading internal adoption of audit analytics tooling — training colleagues on Alteryx and data analytics workflows, and building automation that replaced manual team utilization reporting.",
-      "Built Alteryx workflows to automate team utilization reporting, enabling more efficient revenue tracking and reducing manual operational effort.",
-      "Contributed to a PySpark pipeline on Cloudera/Hive for a banking analytics engagement, preprocessing large-scale contract transaction data to support ML-driven branch trend analysis."
+      "Built Alteryx workflows to automate team utilization reporting, enabling more efficient revenue tracking and reducing manual operational effort."
     ],
     "order": 1
   },

@@ -51,6 +51,26 @@
       ]
     }
   ],
+  "credentials": [
+    {
+      "title": "Claude 101",
+      "issuer": "Anthropic Education",
+      "date": "June 2026",
+      "url": "https://verify.skilljar.com/c/yh7hdigykprx"
+    },
+    {
+      "title": "Claude Code 101",
+      "issuer": "Anthropic Education",
+      "date": "June 2026",
+      "url": "https://verify.skilljar.com/c/tf7btpdxymus"
+    },
+    {
+      "title": "AI Fluency: Framework & Foundations",
+      "issuer": "Anthropic Education",
+      "date": "June 2026",
+      "url": "https://verify.skilljar.com/c/owsvicpywts2"
+    }
+  ],
   "honorsAwards": [
     {
       "title": "My Digital Academy Awardee",

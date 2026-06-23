@@ -101,9 +101,11 @@ async function renderExperiences() {
     const rows = (data || []).map(exp => {
         const tags = (exp.tags || []).map(t => `<span class="exp-tag">${t}</span>`).join('');
         const body = exp.id === 1 ? renderPwCDescriptionSections(exp.description || []) : renderBulletList(exp.description || []);
+        const logo = exp.logo ? `<div class="exp-logo-wrap"><img src="${exp.logo}" alt="${getCompanyShort(exp.company)} logo" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : '';
         return `
             <div class="exp-item slide-in">
                 <div>
+                    ${logo}
                     <div class="exp-period">${formatPeriod(exp.period)}</div>
                     <div class="exp-company">${getCompanyShort(exp.company)}</div>
                 </div>
@@ -206,7 +208,6 @@ function getProjectColorName(project) {
     if (project.group === 'Cloud & Machine Learning') return 'blue';
     return 'muted';
 }
-const COLOR_VAR = { amber:'var(--amber)', green:'var(--green)', blue:'var(--blue)', muted:'var(--muted2)' };
 
 function shortenTitle(title) {
     const stop = new Set(['&','-','—','and','for','the','of','a','an','to','in','based']);
@@ -458,28 +459,30 @@ function activateGraphDetail(container, project, num) {
     }
 }
 
+function renderCaseStudyRows(caseStudy) {
+    if (!caseStudy) return '';
+    const rows = [
+        {label:'Context', text:caseStudy.context},
+        {label:'My role', text:caseStudy.role},
+        {label:'Outcome', text:caseStudy.outcome},
+    ].filter(r=>r.text);
+    return rows.length ? `<div class="proj-detail-case">${rows.map(r=>`
+        <div class="case-row"><span class="case-label">${r.label}</span><span class="case-text">${r.text}</span></div>`).join('')}</div>` : '';
+}
+
+function renderProjectLinksOrNote(project) {
+    const linkDefs = [{key:'code',label:'Code'},{key:'demo',label:'Demo'},{key:'doc',label:'Docs'},{key:'website',label:'Website'}];
+    const links = linkDefs.filter(d=>project[d.key]).map(d=>`<a href="${project[d.key]}" class="project-link" target="_blank" rel="noopener">↗ ${d.label}</a>`).join('');
+    if (links) return `<div class="proj-detail-links">${links}</div>`;
+    return project.note ? `<p class="proj-note">${project.note}</p>` : '';
+}
+
 function renderDetailPanel(project, num) {
-    const color  = getProjectColorName(project);
     const isWIP  = project.status === 'in-progress';
     const isPwC  = (project.id||'').includes('pwc');
     const badge  = isWIP ? `<span class="proj-detail-badge wip">● In progress</span>`
                  : isPwC ? `<span class="proj-detail-badge pwc">PwC engagement</span>` : '';
-
-    const caseHTML = (() => {
-        if (!project.caseStudy) return '';
-        const rows = [
-            {label:'Context', text:project.caseStudy.context},
-            {label:'My role', text:project.caseStudy.role},
-            {label:'Outcome', text:project.caseStudy.outcome},
-        ].filter(r=>r.text);
-        return rows.length ? `<div class="proj-detail-case">${rows.map(r=>`
-            <div class="case-row"><span class="case-label">${r.label}</span><span class="case-text">${r.text}</span></div>`).join('')}</div>` : '';
-    })();
-
     const stack = (project.tags||[]).map(t=>`<span>${t}</span>`).join('');
-    const linkDefs = [{key:'code',label:'Code'},{key:'demo',label:'Demo'},{key:'doc',label:'Docs'},{key:'website',label:'Website'}];
-    const links = linkDefs.filter(d=>project[d.key]).map(d=>`<a href="${project[d.key]}" class="project-link" target="_blank" rel="noopener">↗ ${d.label}</a>`).join('');
-    const noteHTML = (!links && project.note) ? `<p class="proj-note">${project.note}</p>` : '';
 
     return `
         <div class="proj-detail-inner">
@@ -489,10 +492,50 @@ function renderDetailPanel(project, num) {
             </div>
             <h3 class="proj-detail-title">${project.title||''}</h3>
             <p class="proj-detail-desc">${project.description||project.summary||''}</p>
-            ${caseHTML}
+            ${renderCaseStudyRows(project.caseStudy)}
             ${stack?`<div class="proj-detail-stack">${stack}</div>`:''}
-            ${links?`<div class="proj-detail-links">${links}</div>`:noteHTML}
+            ${renderProjectLinksOrNote(project)}
         </div>`;
+}
+
+function renderFlagshipCard(project) {
+    if (!project) return '';
+    const isWIP = project.status === 'in-progress';
+    const badge = isWIP ? `<span class="proj-detail-badge wip">● In progress</span>` : '';
+    const stack = (project.tags||[]).map(t=>`<span>${t}</span>`).join('');
+    const media = project.image
+        ? `<div class="proj-flagship-media"><img src="${project.image}" alt="${project.title||''} screenshot" loading="lazy" onerror="this.closest('.proj-flagship-media').style.display='none'"></div>`
+        : '';
+
+    return `
+        <div class="proj-flagship">
+            <div class="proj-flagship-glow"></div>
+            ${media}
+            <div class="proj-flagship-body">
+                <div class="proj-flagship-eyebrow">Flagship project</div>
+                <div class="proj-detail-meta">
+                    <span class="proj-detail-type">${project.type||project.group||''}</span>${badge}
+                </div>
+                <h3 class="proj-flagship-title">${project.title||''}</h3>
+                <p class="proj-flagship-desc">${project.description||project.summary||''}</p>
+                ${renderCaseStudyRows(project.caseStudy)}
+                ${stack?`<div class="proj-detail-stack">${stack}</div>`:''}
+                ${renderProjectLinksOrNote(project)}
+            </div>
+        </div>`;
+}
+
+function setupTilt(el, max = 6) {
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        const rx = (py - 0.5) * -2 * max;
+        const ry = (px - 0.5) * 2 * max;
+        el.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
 }
 
 async function renderProjects() {
@@ -502,19 +545,25 @@ async function renderProjects() {
     const data = await fetchJSON('data/projects.json');
     if (!data) { container.innerHTML = sectionShell('04', 'Selected projects', createErrorCard('projects')); return; }
 
+    const flagship = data.find(p => p.flagship);
+    const graphProjects = data.filter(p => !p.flagship);
+
     const cvUrl  = document.body?.dataset?.cvUrl || '';
     const cvLink = cvUrl ? `<div class="proj-cv-row"><a href="${cvUrl}" class="btn-ghost" target="_blank" rel="noopener">↓ Download CV</a></div>` : '';
 
     container.innerHTML = sectionShell('04', 'Selected projects', `
+        ${renderFlagshipCard(flagship)}
         <div class="proj-graph-container"></div>
         <div class="proj-graph-detail" hidden></div>
         ${cvLink}
     `);
 
+    setupTilt(container.querySelector('.proj-flagship'));
+
     // Build graph after DOM is laid out so clientWidth is accurate
     setTimeout(() => {
         const graphContainer = container.querySelector('.proj-graph-container');
-        const { nodes, edges, nodeMap } = buildGraphData(data);
+        const { nodes, edges, nodeMap } = buildGraphData(graphProjects);
         runForceSimulation(nodes, edges, GRAPH_W, GRAPH_H);
         graphContainer.innerHTML = buildGraphHTML(nodes, edges, nodeMap);
         setupGraphInteractions(graphContainer, nodes, nodeMap, (project, num) => {
@@ -547,6 +596,15 @@ async function renderSkills() {
             <div class="skill-tags">${(cat.skills||[]).map(s=>`<span class="skill-tag${tagCls(s,i)}">${s}</span>`).join('')}</div>
         </div>`).join('')}</div>`;
 
+    const credentialsHTML = (data.credentials||[]).length ? `
+        <div class="subsection-label">Credentials</div>
+        <div class="honors-grid">${(data.credentials||[]).map(c=>`
+            <div class="honor-item stagger-item">
+                <div class="honor-title">${c.title}</div>
+                <div class="honor-meta">${c.date} · ${c.issuer}</div>
+                ${c.url ? `<a href="${c.url}" class="project-link" target="_blank" rel="noopener">↗ Verify</a>` : ''}
+            </div>`).join('')}</div>` : '';
+
     const honorsHTML = (data.honorsAwards||[]).length ? `
         <div class="subsection-label">Honors &amp; Awards</div>
         <div class="honors-grid">${(data.honorsAwards||[]).map(h=>`
@@ -556,7 +614,7 @@ async function renderSkills() {
                 <div class="honor-desc">${h.description}</div>
             </div>`).join('')}</div>` : '';
 
-    section.innerHTML = sectionShell('02', 'Skills', skillsGrid + honorsHTML);
+    section.innerHTML = sectionShell('02', 'Skills', skillsGrid + credentialsHTML + honorsHTML);
     observeStaggerItems(section);
 }
 
