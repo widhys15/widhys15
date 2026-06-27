@@ -5,7 +5,7 @@ const PILLARS = [
   {
     cls: 'build', tag: '// build',
     title: 'I build things that get used',
-    desc: 'Automations, tools, and side projects that actually ship — a live IDX trading dashboard, cloud APIs, IoT. If a process should be automated, I automate it.',
+    desc: 'Automations, tools, and side projects that actually ship — IDX dashboard, cloud APIs, IoT. If it can be automated, I automate it.',
   },
   {
     cls: 'trade', tag: '// trade',
@@ -15,7 +15,7 @@ const PILLARS = [
   {
     cls: 'audit', tag: '// audit',
     title: 'I audit by day',
-    desc: 'IT controls audit & consulting at PwC, driven by AI and data analytics — I make systems more reliable, and that rigor makes the building sharper.',
+    desc: 'IT controls audit & consulting at PwC, driven by AI and data analytics. I make the systems behind the numbers more reliable.',
   },
 ];
 
