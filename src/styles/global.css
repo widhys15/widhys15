@@ -314,7 +314,7 @@ section { padding: 5rem var(--pad-h); position: relative; }
    ============================================================ */
 .wid-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
 .wid-block {
-  padding: 1.5rem 1.4rem; background: var(--paper-2);
+  padding: 1.85rem 1.5rem; background: var(--paper-2);
   border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: var(--shadow-sticker);
 }
 .wid-tag { font-family: var(--mono); font-size: 11px; color: var(--sky); margin-bottom: 0.7rem; }
