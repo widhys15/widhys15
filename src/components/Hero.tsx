@@ -29,8 +29,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-brand">
-            <strong>IT auditor at PwC</strong> who codes his way out of busywork — I automate the
-            tedious parts, trade the markets on a system, and build tools I actually use.
+            <strong>IT controls audit &amp; consulting at PwC</strong>, driven by AI and data analytics.
+            After hours, I build my own market screeners, trading bots, and automation.
           </p>
 
           <div className="hero-meta">

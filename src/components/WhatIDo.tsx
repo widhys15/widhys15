@@ -15,7 +15,7 @@ const PILLARS = [
   {
     cls: 'audit', tag: '// audit',
     title: 'I audit by day',
-    desc: 'IT controls auditor at PwC — I dig into how systems really work, then make them more reliable. The rigor that makes the building sharper.',
+    desc: 'IT controls audit & consulting at PwC, driven by AI and data analytics — I dig into how systems really work, then make them more reliable. The rigor that makes the building sharper.',
   },
 ];
 
